@@ -95,7 +95,7 @@ export function SkillsPage() {
                   <h3 className="mt-4 text-[13px] font-bold tracking-[0.16em] text-white">
                     {card.title}
                   </h3>
-                  <ul className="mt-4 flex-1 space-y-2">
+                  <ul className="mt-4 space-y-2">
                     {card.items.map((item) => (
                       <li
                         key={item}
@@ -106,18 +106,6 @@ export function SkillsPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6">
-                    <div className="mb-2 flex items-center justify-between text-[10px] font-semibold tracking-[0.16em] text-white/55">
-                      <span>PROFICIENCY</span>
-                      <span>{card.proficiency}%</span>
-                    </div>
-                    <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
-                      <div
-                        className="h-full rounded-full bg-accent"
-                        style={{ width: `${card.proficiency}%` }}
-                      />
-                    </div>
-                  </div>
                 </li>
               );
             })}

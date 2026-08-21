@@ -350,7 +350,7 @@ export const resumePage = {
   education: {
     degree: "Bachelor of Science",
     field: "Digital Communication & Media Arts",
-    school: "Springfield College",
+    school: "Bowie State University",
   },
   skillsIntro:
     "A broad mix of creative, technical, and strategic skills from coursework and hands-on projects.",

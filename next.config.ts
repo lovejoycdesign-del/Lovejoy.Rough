@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     "*.cursor.com",
     "cursor.sh",
     "*.cursor.sh",
+    "*.trycloudflare.com",
   ],
 };
 

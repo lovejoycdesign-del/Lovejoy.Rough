@@ -367,6 +367,28 @@ export const works: WorkItem[] = [
     description:
       "Painted self-portrait in blue and orange — color blocking, thick strokes, and a direct gaze.",
   },
+  {
+    id: "19",
+    title: "Univers Typeface",
+    medium: "Adobe Illustrator",
+    size: "8”×11”",
+    category: "graphic",
+    image: "/work/univers-typeface.jpg",
+    imageFit: "contain",
+    description:
+      "A type poster built from Univers — rocket form, alphabet as stars, and curved copy on Frutiger’s neo-grotesque family.",
+  },
+  {
+    id: "20",
+    title: "Georgia Typeface",
+    medium: "Adobe Illustrator",
+    size: "8”×11”",
+    category: "graphic",
+    image: "/work/georgia-typeface.jpg",
+    imageFit: "contain",
+    description:
+      "A type poster for Matthew Carter’s Georgia — the letter X, state outline, and Jerusalem cross in a serif composition.",
+  },
 ];
 
 export const workPage = {

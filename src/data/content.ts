@@ -529,8 +529,8 @@ export const resumePage = {
   experience: [
     {
       title: "Digital Designer & Manager",
-      meta: "Chirombo Inc. · Da Prinxe · Baltimore, MD",
-      body: "Designed the Da Prinxe artist website in Adobe InDesign and Adobe XD — home, new music, videos, merch, and contact — and supported brand-adjacent digital work.",
+      meta: "LoveJoy Health · Daprinxe · Baltimore, MD",
+      body: "Designed the LoveJoy Health site and the Daprinxe artist website in Adobe InDesign and Adobe XD — home, new music, videos, merch, and contact — and supported brand-adjacent digital work.",
     },
     {
       title: "Freelance Digital Design",
@@ -553,7 +553,8 @@ export const resumePage = {
   achievements: [
     "Kenwood High School graduate (Baltimore, MD) — ran cross-country and track and played basketball; go Bluebirds!",
     "Pursuing a Bachelor of Science in Visual Communication and Digital Media Arts at Bowie State University",
-    "Designed the Da Prinxe artist website, including home, music, merch, and signup",
+    "Designed the LoveJoy Health website for connected behavioral healthcare",
+    "Designed the Daprinxe artist website, including home, music, merch, and signup",
     "Built a portfolio of type posters, packaging, magazine covers, UI concepts, and traditional painting",
   ],
   ctaHeading: "LET'S CREATE SOMETHING AMAZING TOGETHER.",

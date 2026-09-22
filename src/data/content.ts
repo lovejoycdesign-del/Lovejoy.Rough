@@ -600,7 +600,7 @@ export const resumePage = {
     },
     {
       title: "Creative Director & Manager",
-      meta: "Daprinxe · DMV",
+      meta: "Daprinxe · Salisbury, MD",
       body: "Designed the Daprinxe artist website in Adobe InDesign and Adobe XD — home, new music, videos, merch, and contact — and supported brand-adjacent digital work.",
     },
     {

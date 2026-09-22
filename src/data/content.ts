@@ -356,6 +356,17 @@ export const works: WorkItem[] = [
     description:
       "Lower homepage modules for new music, videos, contact, merch, and a Join the Real Ones signup.",
   },
+  {
+    id: "18",
+    title: "Self Portrait",
+    medium: "Acrylic on canvas",
+    size: "9”×12”",
+    category: "art",
+    image: "/work/self-portrait.jpg",
+    imageFit: "contain",
+    description:
+      "Painted self-portrait in blue and orange — color blocking, thick strokes, and a direct gaze.",
+  },
 ];
 
 export const workPage = {

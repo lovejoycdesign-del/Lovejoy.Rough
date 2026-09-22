@@ -300,6 +300,18 @@ export const works: WorkItem[] = [
     description:
       "Product advertisement for Bomb Berries cereal — a fruit-packed breakfast brand with an explosion of flavor, coming soon to a shop near you.",
   },
+  {
+    id: "13",
+    title: "Bowie State Job Fair",
+    year: "2025",
+    medium: "Adobe InDesign, Adobe Photoshop",
+    size: "8.5”×11”",
+    category: "graphic",
+    image: "/work/bowie-job-fair.jpg",
+    imageFit: "contain",
+    description:
+      "Event poster for the Bowie State University Job Fair, shown with layout callouts for hierarchy, type, and photo placement.",
+  },
 ];
 
 export const workPage = {

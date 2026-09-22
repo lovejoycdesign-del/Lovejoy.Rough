@@ -334,6 +334,28 @@ export const works: WorkItem[] = [
     description:
       "Layered pink and red ribbons over a dark ground — a traditional painting about movement, overlap, and tension.",
   },
+  {
+    id: "16",
+    title: "Da Prinxe — Home",
+    medium: "Web Design, UI/UX",
+    size: "Desktop web",
+    category: "digital",
+    image: "/work/da-prinxe-home.jpg",
+    imageFit: "contain",
+    description:
+      "Homepage for artist Da Prinxe — dark cinematic layout, new-release callouts, and streaming CTAs.",
+  },
+  {
+    id: "17",
+    title: "Da Prinxe — Site",
+    medium: "Web Design, UI/UX",
+    size: "Desktop web",
+    category: "digital",
+    image: "/work/da-prinxe-site.jpg",
+    imageFit: "contain",
+    description:
+      "Lower homepage modules for new music, videos, contact, merch, and a Join the Real Ones signup.",
+  },
 ];
 
 export const workPage = {

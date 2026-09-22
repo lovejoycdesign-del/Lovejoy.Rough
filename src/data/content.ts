@@ -554,7 +554,35 @@ export const resumePage = {
       company: "RELI Group Inc.",
       href: "https://www.religroupinc.com/",
       meta: "Health IT",
-      body: "Started as a Design Strategist Intern in the Health IT department. When my supervisor Bert Chiduza (bert@shumbafloors.com) retired, I was employed directly by the Director of Human Resources because I had become essential to the company.",
+      body: [
+        {
+          text: "Assisted with the development and design of government software. Worked with organizations like the ",
+        },
+        {
+          text: "Centers for Medicare & Medicaid Services",
+          href: "https://www.cms.gov/",
+        },
+        { text: ", " },
+        {
+          text: "Centers for Disease Control and Prevention",
+          href: "https://www.cdc.gov/index.html",
+        },
+        { text: " and the " },
+        {
+          text: "Transportation Security Administration",
+          href: "https://www.tsa.gov/",
+        },
+        {
+          text: ". When my supervisor Bert Chiduza (",
+        },
+        {
+          text: "bert@shumbafloors.com",
+          href: "mailto:bert@shumbafloors.com",
+        },
+        {
+          text: ") retired, I was employed directly by the Director of Human Resources and worked closely with the Director of Marketing. During this process I learned the inner workings of running a successful tech company, real-world marketing and advertisement skills and corporate etiquette.",
+        },
+      ],
     },
     {
       title: "Digital Designer",

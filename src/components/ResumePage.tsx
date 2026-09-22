@@ -41,6 +41,39 @@ const highlightIconMap = {
   ui: PhoneMobileIcon,
 };
 
+const experienceLinkClass =
+  "text-accent underline decoration-accent/50 underline-offset-4 transition hover:text-accent hover:decoration-accent";
+
+function ExperienceBody({
+  body,
+}: {
+  body: string | { text: string; href?: string }[];
+}) {
+  if (typeof body === "string") {
+    return <p className="mt-2 text-[13px] leading-relaxed text-white/65">{body}</p>;
+  }
+
+  return (
+    <p className="mt-2 text-[13px] leading-relaxed text-white/65">
+      {body.map((part, index) =>
+        part.href ? (
+          <a
+            key={`${part.text}-${index}`}
+            href={part.href}
+            target={part.href.startsWith("mailto:") ? undefined : "_blank"}
+            rel={part.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+            className={experienceLinkClass}
+          >
+            {part.text}
+          </a>
+        ) : (
+          <span key={`${part.text}-${index}`}>{part.text}</span>
+        ),
+      )}
+    </p>
+  );
+}
+
 function SectionTitle({
   icon: Icon,
   children,
@@ -251,7 +284,7 @@ export function ResumePage() {
                           job.meta
                         )}
                       </p>
-                      <p className="mt-2 text-[13px] leading-relaxed text-white/65">{job.body}</p>
+                      <ExperienceBody body={job.body} />
                     </li>
                   );
                 })}

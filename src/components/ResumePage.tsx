@@ -199,7 +199,7 @@ export function ResumePage() {
               <SectionTitle icon={BriefcaseIcon}>EXPERIENCE</SectionTitle>
               <ol className="relative mt-6 space-y-7 border-l border-accent/40 pl-6">
                 {resumePage.experience.map((job) => (
-                  <li key={job.title} className="relative">
+                  <li key={job.meta} className="relative">
                     <span className="absolute top-1.5 -left-[1.9375rem] h-3 w-3 rounded-full bg-accent" />
                     <h3 className="text-[15px] font-semibold text-white">{job.title}</h3>
                     <p className="mt-1 text-[12px] tracking-wide text-accent/90">{job.meta}</p>

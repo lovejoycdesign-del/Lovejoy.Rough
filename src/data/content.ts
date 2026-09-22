@@ -528,9 +528,14 @@ export const resumePage = {
   quote: "Design is more than aesthetics — it's about solving real problems.",
   experience: [
     {
+      title: "Digital Designer",
+      meta: "LoveJoy Health · Baltimore, MD",
+      body: "Assisted in the development and design of this mental health technology platform including websites, apps and etc.",
+    },
+    {
       title: "Digital Designer & Manager",
-      meta: "LoveJoy Health · Daprinxe · Baltimore, MD",
-      body: "Designed the LoveJoy Health site and the Daprinxe artist website in Adobe InDesign and Adobe XD — home, new music, videos, merch, and contact — and supported brand-adjacent digital work.",
+      meta: "Daprinxe · Baltimore, MD",
+      body: "Designed the Daprinxe artist website in Adobe InDesign and Adobe XD — home, new music, videos, merch, and contact — and supported brand-adjacent digital work.",
     },
     {
       title: "Freelance Digital Design",

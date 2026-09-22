@@ -34,12 +34,12 @@ export const skillGroups = [
   },
   {
     title: "ANIMATION",
-    items: "2D Animation, 3D Animation",
+    items: "2D Animation, 3D Animation, Motion Design",
     icon: "animation" as const,
   },
   {
     title: "DEVELOPMENT",
-    items: "Python, JavaScript, Programming",
+    items: "Python, JavaScript, CSS",
     icon: "development" as const,
   },
   {

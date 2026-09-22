@@ -405,6 +405,9 @@ export const contact = {
   email: "lovejoyc.design@gmail.com",
   emailHref: "mailto:lovejoyc.design@gmail.com",
   linkedin: "https://www.linkedin.com/in/lj-chirombo-758868271/",
+  phone: "410-699-7677",
+  phoneHref: "tel:410-699-7677",
+  location: "Baltimore, MD",
 };
 
 export const socialLinks = [

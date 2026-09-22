@@ -5,8 +5,10 @@ import {
   CommunityIcon,
   EmailIcon,
   LinkedInIcon,
+  LocationIcon,
   MusicIcon,
   PenIcon,
+  PhoneIcon,
   PlaneIcon,
   QuoteIcon,
 } from "@/components/icons";
@@ -90,6 +92,33 @@ export function ContactPage() {
                 <span className="mt-1 block text-[15px] text-white">lj-chirombo</span>
               </span>
             </a>
+
+            <a
+              href={contact.phoneHref}
+              className="flex items-center gap-4 border border-white/10 bg-[#121212] p-5 transition hover:border-accent/50"
+            >
+              <span className="grid h-12 w-12 shrink-0 place-items-center bg-black text-accent">
+                <PhoneIcon size={22} />
+              </span>
+              <span>
+                <span className="block text-[11px] font-semibold tracking-[0.2em] text-white/55">
+                  PHONE
+                </span>
+                <span className="mt-1 block text-[15px] text-white">{contact.phone}</span>
+              </span>
+            </a>
+
+            <div className="flex items-center gap-4 border border-white/10 bg-[#121212] p-5">
+              <span className="grid h-12 w-12 shrink-0 place-items-center bg-black text-accent">
+                <LocationIcon size={22} />
+              </span>
+              <span>
+                <span className="block text-[11px] font-semibold tracking-[0.2em] text-white/55">
+                  LOCATION
+                </span>
+                <span className="mt-1 block text-[15px] text-white">{contact.location}</span>
+              </span>
+            </div>
           </div>
 
           <div>

@@ -556,7 +556,7 @@ export const resumePage = {
       meta: "Health IT",
       body: [
         {
-          text: "Assisted with the development and design of government software. Worked with organizations like the ",
+          text: "Assisted with the development and design of government software. Helped process contracts, assisted with background checks as well as onboarding, pre-onboarding and terminations. Worked with organizations like the ",
         },
         {
           text: "Centers for Medicare & Medicaid Services",

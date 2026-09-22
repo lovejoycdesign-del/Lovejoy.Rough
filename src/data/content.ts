@@ -289,6 +289,17 @@ export const works: WorkItem[] = [
     description:
       "Magazine cover and back spread for Green Street: Environmental Conscience — hiking destinations for 2026, trail safety, and what to pack.",
   },
+  {
+    id: "12",
+    title: "Bomb Berries",
+    medium: "Adobe Photoshop, Adobe Illustrator",
+    size: "11”×17”",
+    category: "branding",
+    image: "/work/bomb-berries.jpg",
+    imageFit: "contain",
+    description:
+      "Product advertisement for Bomb Berries cereal — a fruit-packed breakfast brand with an explosion of flavor, coming soon to a shop near you.",
+  },
 ];
 
 export const workPage = {

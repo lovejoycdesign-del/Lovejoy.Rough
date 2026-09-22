@@ -174,7 +174,7 @@ export type WorkItem = {
 
 export const workFilters: { id: WorkCategory; label: string }[] = [
   { id: "all", label: "ALL WORK" },
-  { id: "art", label: "ART & ILLUSTRATION" },
+  { id: "art", label: "TRADITIONAL ART" },
   { id: "graphic", label: "GRAPHIC DESIGN" },
   { id: "digital", label: "DIGITAL DESIGN" },
   { id: "animation", label: "ANIMATION" },
@@ -322,6 +322,17 @@ export const works: WorkItem[] = [
     imageFit: "contain",
     description:
       "Unfolded cereal box for Bomb Berries — front panel, nutrition facts, maze game, and Berry Delicious side panels.",
+  },
+  {
+    id: "15",
+    title: "Pink Abstraction",
+    medium: "Acrylic on canvas",
+    size: "9”×12”",
+    category: "art",
+    image: "/work/pink-abstraction.jpg",
+    imageFit: "contain",
+    description:
+      "Layered pink and red ribbons over a dark ground — a traditional painting about movement, overlap, and tension.",
   },
 ];
 

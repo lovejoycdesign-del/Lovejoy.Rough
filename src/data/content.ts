@@ -580,7 +580,7 @@ export const resumePage = {
           href: "mailto:bert@shumbafloors.com",
         },
         {
-          text: ") retired, I was employed directly by the Director of Human Resources and worked closely with the Director of Marketing. During this process I learned the inner workings of running a successful tech company, real-world marketing and advertisement skills and corporate etiquette.",
+          text: ") retired, I was employed directly by the Director of Human Resources and worked closely with the Director of Marketing. During this process I learned the inner workings of running a successful tech company, real-world marketing, advertisement skills and corporate etiquette.",
         },
       ],
     },

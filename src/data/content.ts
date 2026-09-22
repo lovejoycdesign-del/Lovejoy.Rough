@@ -170,6 +170,8 @@ export type WorkItem = {
   image: string;
   /** Use contain for wide spreads so the full piece stays visible in the grid. */
   imageFit?: "cover" | "contain";
+  /** When set, clicking the image opens this URL instead of the lightbox. */
+  href?: string;
 };
 
 export const workFilters: { id: WorkCategory; label: string }[] = [
@@ -388,6 +390,18 @@ export const works: WorkItem[] = [
     imageFit: "contain",
     description:
       "A type poster for Matthew Carter’s Georgia — the letter X, state outline, and Jerusalem cross in a serif composition.",
+  },
+  {
+    id: "21",
+    title: "LoveJoy Health",
+    medium: "Web Design, UI/UX",
+    size: "Desktop web",
+    category: "digital",
+    image: "/work/lovejoy-health.jpg",
+    imageFit: "contain",
+    href: "https://lovejoy.health/",
+    description:
+      "Live site for LoveJoy Health — connected behavioral healthcare, from finding support to coordinating care after the appointment ends.",
   },
 ];
 

@@ -24,29 +24,47 @@ function WorkImage({
 }) {
   const [failed, setFailed] = useState(false);
 
+  const imageEl = (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={item.image}
+        alt={item.title}
+        className={`h-full w-full transition duration-300 group-hover:scale-[1.03] ${
+          item.imageFit === "contain" ? "object-contain" : "object-cover"
+        }`}
+        onError={() => setFailed(true)}
+      />
+      <span className="pointer-events-none absolute inset-0 bg-black/0 transition group-hover:bg-black/25" />
+      <span className="pointer-events-none absolute right-3 bottom-3 rounded bg-black/70 px-2 py-1 text-[10px] font-semibold tracking-[0.14em] text-white/90 opacity-0 transition group-hover:opacity-100">
+        {item.href ? "VISIT SITE" : "CLICK TO ENLARGE"}
+      </span>
+    </>
+  );
+
   return (
     <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md bg-[#1a1a1a]">
       {!failed ? (
-        <button
-          type="button"
-          onClick={() => onOpen(item)}
-          className="group absolute inset-0 cursor-zoom-in"
-          aria-label={`Enlarge ${item.title}`}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={item.image}
-            alt={item.title}
-            className={`h-full w-full transition duration-300 group-hover:scale-[1.03] ${
-              item.imageFit === "contain" ? "object-contain" : "object-cover"
-            }`}
-            onError={() => setFailed(true)}
-          />
-          <span className="pointer-events-none absolute inset-0 bg-black/0 transition group-hover:bg-black/25" />
-          <span className="pointer-events-none absolute right-3 bottom-3 rounded bg-black/70 px-2 py-1 text-[10px] font-semibold tracking-[0.14em] text-white/90 opacity-0 transition group-hover:opacity-100">
-            CLICK TO ENLARGE
-          </span>
-        </button>
+        item.href ? (
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group absolute inset-0 cursor-pointer"
+            aria-label={`Open ${item.title}`}
+          >
+            {imageEl}
+          </a>
+        ) : (
+          <button
+            type="button"
+            onClick={() => onOpen(item)}
+            className="group absolute inset-0 cursor-zoom-in"
+            aria-label={`Enlarge ${item.title}`}
+          >
+            {imageEl}
+          </button>
+        )
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 border border-dashed border-white/10 bg-[#161616] px-4 text-center">
           <p className="text-[11px] font-semibold tracking-[0.16em] text-accent">

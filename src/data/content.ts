@@ -312,6 +312,17 @@ export const works: WorkItem[] = [
     description:
       "Event poster for the Bowie State University Job Fair, shown with layout callouts for hierarchy, type, and photo placement.",
   },
+  {
+    id: "14",
+    title: "Bomb Berries Packaging",
+    medium: "Adobe Illustrator, Adobe Photoshop",
+    size: "Package dieline",
+    category: "graphic",
+    image: "/work/bomb-berries-box.jpg",
+    imageFit: "contain",
+    description:
+      "Unfolded cereal box for Bomb Berries — front panel, nutrition facts, maze game, and Berry Delicious side panels.",
+  },
 ];
 
 export const workPage = {

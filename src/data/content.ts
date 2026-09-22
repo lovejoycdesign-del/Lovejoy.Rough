@@ -168,6 +168,8 @@ export type WorkItem = {
   category: WorkCategory;
   /** Drop files in /public/work/ using this filename (e.g. man-from-the-dark.jpg) */
   image: string;
+  /** Use contain for wide spreads so the full piece stays visible in the grid. */
+  imageFit?: "cover" | "contain";
 };
 
 export const workFilters: { id: WorkCategory; label: string }[] = [
@@ -274,6 +276,18 @@ export const works: WorkItem[] = [
     category: "digital",
     image: "/work/reli-group-ui.png",
     description: "A potential design for the user interface of a mobile phone app.",
+  },
+  {
+    id: "11",
+    title: "Green Street",
+    year: "2026",
+    medium: "Adobe InDesign, Adobe Photoshop",
+    size: "8.5”×11”",
+    category: "graphic",
+    image: "/work/green-street.jpg",
+    imageFit: "contain",
+    description:
+      "Magazine cover and back spread for Green Street: Environmental Conscience — hiking destinations for 2026, trail safety, and what to pack.",
   },
 ];
 

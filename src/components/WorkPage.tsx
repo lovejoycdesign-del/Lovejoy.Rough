@@ -37,7 +37,9 @@ function WorkImage({
           <img
             src={item.image}
             alt={item.title}
-            className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+            className={`h-full w-full transition duration-300 group-hover:scale-[1.03] ${
+              item.imageFit === "contain" ? "object-contain" : "object-cover"
+            }`}
             onError={() => setFailed(true)}
           />
           <span className="pointer-events-none absolute inset-0 bg-black/0 transition group-hover:bg-black/25" />

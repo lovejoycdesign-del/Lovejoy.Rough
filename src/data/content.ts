@@ -610,7 +610,7 @@ export const skillsPage = {
     {
       title: "DEVELOPMENT",
       icon: "development" as const,
-      items: ["Python Programming", "JavaScript", "Problem Solving", "CSS"],
+      items: ["Python Programming", "JavaScript", "CSS", "Problem Solving"],
     },
     {
       title: "STRATEGY",
@@ -620,7 +620,7 @@ export const skillsPage = {
     {
       title: "ART",
       icon: "art" as const,
-      items: ["Traditional Art", "Drawing & Painting", "Mixed Media", "Digital Art"],
+      items: ["3D Art", "Basic Drawing and Painting", "Mixed Media", "Digital Art"],
     },
     {
       title: "LOGISTICS",

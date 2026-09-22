@@ -466,8 +466,10 @@ export const resumePage = {
     "I blend creativity, technical expertise, and strategy to design meaningful experiences that inform, inspire, and leave a lasting impact.",
   education: {
     degree: "Bachelor of Science",
-    field: "Digital Communication & Media Arts",
+    field: "Visual Communication and Digital Media Arts",
     school: "Bowie State University",
+    secondaryDegree: "High School Graduate",
+    secondarySchool: "Kenwood High School (Baltimore, MD)",
   },
   skillsIntro:
     "A broad mix of creative, technical, and strategic skills from coursework and hands-on projects.",
@@ -512,24 +514,19 @@ export const resumePage = {
   quote: "Design is more than aesthetics — it's about solving real problems.",
   experience: [
     {
-      title: "Digital Design & Creative Projects",
-      meta: "Self-Directed Work · 2022 – Present",
-      body: "Creating visual designs, animations, and brand work while managing projects from concept to finish.",
+      title: "Digital Designer & Manager",
+      meta: "Chirombo Inc. · Da Prinxe · Baltimore, MD",
+      body: "Designed the Da Prinxe artist website in Adobe InDesign and Adobe XD — home, new music, videos, merch, and contact — and supported brand-adjacent digital work.",
     },
     {
-      title: "Design & Logistics Support",
-      meta: "Academic Projects · 2022 – Present",
-      body: "Supporting planning, coordination, and problem-solving across design and production workflows.",
+      title: "Freelance Digital Design",
+      meta: "Independent · Baltimore, MD",
+      body: "Posters, packaging, magazine covers, and branding for clients and course projects, including Green Street, Bomb Berries, and the Bowie State Job Fair.",
     },
     {
-      title: "Freelance Design Projects",
-      meta: "Independent · 2021 – Present",
-      body: "Delivering branding, posters, and digital content for clients with clear goals and deadlines.",
-    },
-    {
-      title: "Continuous Learning",
-      meta: "Ongoing · Always",
-      body: "Expanding skills in design, animation, development, and strategy through coursework and practice.",
+      title: "Visual Communication Student",
+      meta: "Bowie State University · Present",
+      body: "Studio and coursework in graphic design, traditional art, UI/UX, and digital media arts, taking projects from concept to finished pieces.",
     },
   ],
   highlights: [
@@ -540,10 +537,10 @@ export const resumePage = {
     { title: "UI/UX Design", detail: "Mobile App Concepts", icon: "ui" as const },
   ],
   achievements: [
-    "Dean's List recognition for academic performance",
-    "Strong performance across digital design coursework",
-    "Featured design and creative projects in portfolio",
-    "Leadership through collaboration and project ownership",
+    "Kenwood High School graduate (Baltimore, MD) — ran cross-country and track and played basketball; go Bluebirds!",
+    "Pursuing a Bachelor of Science in Visual Communication and Digital Media Arts at Bowie State University",
+    "Designed the Da Prinxe artist website, including home, music, merch, and signup",
+    "Built a portfolio of type posters, packaging, magazine covers, UI concepts, and traditional painting",
   ],
   ctaHeading: "LET'S CREATE SOMETHING AMAZING TOGETHER.",
   ctaBody: "I'm always open to new opportunities and exciting projects.",

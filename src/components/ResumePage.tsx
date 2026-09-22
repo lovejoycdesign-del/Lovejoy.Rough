@@ -113,6 +113,12 @@ export function ResumePage() {
                 <p className="text-[15px] font-semibold text-white">{resumePage.education.degree}</p>
                 <p className="mt-1 text-[14px] text-accent">{resumePage.education.field}</p>
                 <p className="mt-2 text-[14px] text-white/75">{resumePage.education.school}</p>
+                <p className="mt-6 text-[15px] font-semibold text-white">
+                  {resumePage.education.secondaryDegree}
+                </p>
+                <p className="mt-2 text-[14px] text-white/75">
+                  {resumePage.education.secondarySchool}
+                </p>
               </div>
             </div>
 

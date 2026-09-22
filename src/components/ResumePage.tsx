@@ -112,7 +112,20 @@ export function ResumePage() {
               <div className="mt-5">
                 <p className="text-[15px] font-semibold text-white">{resumePage.education.degree}</p>
                 <p className="mt-1 text-[14px] text-accent">{resumePage.education.field}</p>
-                <p className="mt-2 text-[14px] text-white/75">{resumePage.education.school}</p>
+                <p className="mt-2 text-[14px] text-white/75">
+                  {resumePage.education.schoolHref ? (
+                    <a
+                      href={resumePage.education.schoolHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-white/30 underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                    >
+                      {resumePage.education.school}
+                    </a>
+                  ) : (
+                    resumePage.education.school
+                  )}
+                </p>
                 <p className="mt-6 text-[15px] font-semibold text-white">
                   {resumePage.education.secondaryDegree}
                 </p>
@@ -202,7 +215,7 @@ export function ResumePage() {
                   const href = "href" in job ? job.href : undefined;
                   const company = "company" in job ? job.company : undefined;
                   return (
-                    <li key={`${job.title}-${job.meta}`} className="relative">
+                    <li key={`${job.title}-${company ?? job.meta}`} className="relative">
                       <span className="absolute top-1.5 -left-[1.9375rem] h-3 w-3 rounded-full bg-accent" />
                       <h3 className="text-[15px] font-semibold text-white">{job.title}</h3>
                       <p className="mt-1 text-[12px] tracking-wide text-accent/90">
@@ -216,8 +229,12 @@ export function ResumePage() {
                             >
                               {company}
                             </a>
-                            {" · "}
-                            {job.meta}
+                            {job.meta ? (
+                              <>
+                                {" · "}
+                                {job.meta}
+                              </>
+                            ) : null}
                           </>
                         ) : (
                           job.meta

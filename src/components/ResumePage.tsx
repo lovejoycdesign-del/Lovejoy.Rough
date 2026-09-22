@@ -130,7 +130,18 @@ export function ResumePage() {
                   {resumePage.education.secondaryDegree}
                 </p>
                 <p className="mt-2 text-[14px] text-white/75">
-                  {resumePage.education.secondarySchool}
+                  {resumePage.education.secondarySchoolHref ? (
+                    <a
+                      href={resumePage.education.secondarySchoolHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-white/30 underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                    >
+                      {resumePage.education.secondarySchool}
+                    </a>
+                  ) : (
+                    resumePage.education.secondarySchool
+                  )}
                 </p>
               </div>
             </div>

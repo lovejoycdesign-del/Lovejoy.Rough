@@ -505,6 +505,7 @@ export const resumePage = {
     schoolHref: "https://www.bowiestate.edu/",
     secondaryDegree: "High School Graduate",
     secondarySchool: "Kenwood High School (Baltimore, MD)",
+    secondarySchoolHref: "https://kenwoodhs.bcps.org/",
   },
   skillsIntro:
     "A broad mix of creative, technical, and strategic skills from coursework and hands-on projects.",

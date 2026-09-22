@@ -610,7 +610,7 @@ export const skillsPage = {
     {
       title: "DEVELOPMENT",
       icon: "development" as const,
-      items: ["Python Programming", "JavaScript", "Problem Solving", "Debugging"],
+      items: ["Python Programming", "JavaScript", "Problem Solving", "CSS"],
     },
     {
       title: "STRATEGY",

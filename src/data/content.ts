@@ -337,7 +337,7 @@ export const works: WorkItem[] = [
   {
     id: "16",
     title: "Da Prinxe — Home",
-    medium: "Web Design, UI/UX",
+    medium: "Adobe InDesign, Adobe XD",
     size: "Desktop web",
     category: "digital",
     image: "/work/da-prinxe-home.jpg",
@@ -347,8 +347,8 @@ export const works: WorkItem[] = [
   },
   {
     id: "17",
-    title: "Da Prinxe — Site",
-    medium: "Web Design, UI/UX",
+    title: "Da Prinxe — Home Part 2",
+    medium: "Adobe InDesign, Adobe XD",
     size: "Desktop web",
     category: "digital",
     image: "/work/da-prinxe-site.jpg",

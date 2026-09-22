@@ -206,6 +206,18 @@ export const works: WorkItem[] = [
   },
   {
     id: "02",
+    title: "AthleteGum",
+    medium: "Figma, Python, Java Script, CSS",
+    size: "Desktop web",
+    category: "digital",
+    image: "/work/athletegum.jpg",
+    imageFit: "contain",
+    href: "https://athletegum.com/",
+    description:
+      "Live site for AthleteGum — pay athletes for real work, securely and transparently, with NIL deals that release payment after work is delivered and approved.",
+  },
+  {
+    id: "03",
     title: "Da Prinxe — Home",
     medium: "Adobe InDesign, Adobe XD",
     size: "Desktop web",
@@ -216,7 +228,7 @@ export const works: WorkItem[] = [
       "Homepage for artist Da Prinxe — dark cinematic layout, new-release callouts, and streaming CTAs.",
   },
   {
-    id: "03",
+    id: "04",
     title: "Da Prinxe — Home Part 2",
     medium: "Adobe InDesign, Adobe XD",
     size: "Desktop web",
@@ -227,7 +239,7 @@ export const works: WorkItem[] = [
       "Lower homepage modules for new music, videos, contact, merch, and a Join the Real Ones signup.",
   },
   {
-    id: "04",
+    id: "05",
     title: "Reli Group Application User Interface",
     medium: "Adobe InDesign, Adobe Photoshop, Adobe After Effects",
     size: "8”×11”",
@@ -236,7 +248,7 @@ export const works: WorkItem[] = [
     description: "A potential design for the user interface of a mobile phone app.",
   },
   {
-    id: "05",
+    id: "06",
     title: "Montana of 300 Chiraq L-mix",
     medium: "Adobe Photoshop, Adobe Illustrator",
     size: "9”×12”",
@@ -246,7 +258,7 @@ export const works: WorkItem[] = [
       "This piece is a creative piece that I wanted to show my interest in personal life. This also represents my love for music and what I am passionate about.",
   },
   {
-    id: "06",
+    id: "07",
     title: "Shiners",
     medium: "Adobe Photoshop, Adobe Illustrator",
     size: "8”×11”",
@@ -255,7 +267,7 @@ export const works: WorkItem[] = [
     description: "This piece symbolizes a complete journey into financial independence.",
   },
   {
-    id: "07",
+    id: "08",
     title: "X-Men Century Typeface",
     medium: "Adobe Illustrator",
     size: "8”×11”",
@@ -265,7 +277,7 @@ export const works: WorkItem[] = [
       "A poster created all through using the Century typeface and only letters and numbers — no pictures at all.",
   },
   {
-    id: "08",
+    id: "09",
     title: "Say No!",
     medium: "Adobe Photoshop, Adobe Illustrator, Adobe InDesign",
     size: "8”×11”",
@@ -274,7 +286,7 @@ export const works: WorkItem[] = [
     description: "A poster to spread awareness on the plague of drug abuse.",
   },
   {
-    id: "09",
+    id: "10",
     title: "On the Path to Gil Sans",
     medium: "Adobe Illustrator",
     size: "8”×11”",
@@ -284,7 +296,7 @@ export const works: WorkItem[] = [
       "A poster created all through using the Century typeface and only letters and numbers — no pictures at all.",
   },
   {
-    id: "10",
+    id: "11",
     title: "Green Street",
     year: "2026",
     medium: "Adobe InDesign, Adobe Photoshop",
@@ -296,7 +308,7 @@ export const works: WorkItem[] = [
       "Magazine cover and back spread for Green Street: Environmental Conscience — hiking destinations for 2026, trail safety, and what to pack.",
   },
   {
-    id: "11",
+    id: "12",
     title: "Bowie State Job Fair",
     year: "2025",
     medium: "Adobe InDesign, Adobe Photoshop",
@@ -308,7 +320,7 @@ export const works: WorkItem[] = [
       "Event poster for the Bowie State University Job Fair, shown with layout callouts for hierarchy, type, and photo placement.",
   },
   {
-    id: "12",
+    id: "13",
     title: "Bomb Berries Packaging",
     medium: "Adobe Illustrator, Adobe Photoshop",
     size: "Package dieline",
@@ -319,7 +331,7 @@ export const works: WorkItem[] = [
       "Unfolded cereal box for Bomb Berries — front panel, nutrition facts, maze game, and Berry Delicious side panels.",
   },
   {
-    id: "13",
+    id: "14",
     title: "Univers Typeface",
     medium: "Adobe Illustrator",
     size: "8”×11”",
@@ -330,7 +342,7 @@ export const works: WorkItem[] = [
       "A type poster built from Univers — rocket form, alphabet as stars, and curved copy on Frutiger’s neo-grotesque family.",
   },
   {
-    id: "14",
+    id: "15",
     title: "Georgia Typeface",
     medium: "Adobe Illustrator",
     size: "8”×11”",
@@ -341,7 +353,7 @@ export const works: WorkItem[] = [
       "A type poster for Matthew Carter’s Georgia — the letter X, state outline, and Jerusalem cross in a serif composition.",
   },
   {
-    id: "15",
+    id: "16",
     title: "Steam Care Logo",
     medium: "Adobe InDesign, Adobe Photoshop",
     size: "6”×10”",
@@ -350,7 +362,7 @@ export const works: WorkItem[] = [
     description: "A logo I designed for a product.",
   },
   {
-    id: "16",
+    id: "17",
     title: "Steam Care Advertisement",
     medium: "Adobe Photoshop, Adobe InDesign, Adobe Illustrator",
     size: "8”×11”",
@@ -359,7 +371,7 @@ export const works: WorkItem[] = [
     description: "An advertisement for a product.",
   },
   {
-    id: "17",
+    id: "18",
     title: "Bomb Berries",
     medium: "Adobe Photoshop, Adobe Illustrator",
     size: "11”×17”",
@@ -370,7 +382,7 @@ export const works: WorkItem[] = [
       "Product advertisement for Bomb Berries cereal — a fruit-packed breakfast brand with an explosion of flavor, coming soon to a shop near you.",
   },
   {
-    id: "18",
+    id: "19",
     title: "Linear Love and Joy",
     medium: "Marker on Paper, Pencil on Paper",
     size: "9”×12”",
@@ -380,7 +392,7 @@ export const works: WorkItem[] = [
       "This piece is about a man who is going through a lot in personal life, but masks to everyone else.",
   },
   {
-    id: "19",
+    id: "20",
     title: "Linear Lady",
     medium: "Pencil on Paper, Marker on Paper",
     size: "9”×12”",
@@ -390,7 +402,7 @@ export const works: WorkItem[] = [
       "A young man in tune with the essence of her environment and at peace.",
   },
   {
-    id: "20",
+    id: "21",
     title: "Pink Abstraction",
     medium: "Acrylic on canvas",
     size: "9”×12”",
@@ -401,7 +413,7 @@ export const works: WorkItem[] = [
       "Layered pink and red ribbons over a dark ground — a traditional painting about movement, overlap, and tension.",
   },
   {
-    id: "21",
+    id: "22",
     title: "Self Portrait",
     medium: "Acrylic on canvas",
     size: "9”×12”",

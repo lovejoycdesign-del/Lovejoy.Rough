@@ -54,7 +54,7 @@ export const about = {
   headingWhite: "MORE THAN DESIGN.",
   headingAccent: "IT'S PURPOSE.",
   intro:
-    "Hello, my name is Lovejoy Chirombo. I am a rising star with an unsatiable appetite for growth. I blend creativity and strategy to design meaningful experiences that inform, inspire, and leave a lasting impact.",
+    "Hello, my name is Lovejoy Chirombo. I am a Bowie State University student attaining my Bachelor of Science in Visual Communications and Digital Media Arts. I was born in Harare, Zimbabwe circa June 10, 2003. I came to Baltimore, Maryland when I was two years old and graduated at Kenwood high school where I ran cross-country and track as well as played Basketball, go Bluebirds! I hope you sincerely enjoy my portfolio and please do not hesitate to contact me for any digital design work you would like me to do for you.",
   connectCta: "LET'S CONNECT",
   skillsEyebrow: "SKILLS & EXPERTISE",
   skillsHeading: "A DIGITAL DESIGNER",

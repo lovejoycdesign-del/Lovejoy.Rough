@@ -288,8 +288,8 @@ export const workPage = {
 };
 
 export const contact = {
-  email: "ljchiromb0@gmail.com",
-  emailHref: "mailto:ljchiromb0@gmail.com",
+  email: "lovejoyc.design@gmail.com",
+  emailHref: "mailto:lovejoyc.design@gmail.com",
   linkedin: "https://www.linkedin.com/in/lj-chirombo-758868271/",
 };
 

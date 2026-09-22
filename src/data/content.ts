@@ -174,13 +174,21 @@ export type WorkItem = {
   href?: string;
 };
 
+export const workCategoryOrder: WorkCategory[] = [
+  "digital",
+  "animation",
+  "graphic",
+  "branding",
+  "art",
+];
+
 export const workFilters: { id: WorkCategory; label: string }[] = [
   { id: "all", label: "ALL WORK" },
-  { id: "art", label: "TRADITIONAL ART" },
-  { id: "graphic", label: "GRAPHIC DESIGN" },
   { id: "digital", label: "DIGITAL DESIGN" },
   { id: "animation", label: "ANIMATION" },
+  { id: "graphic", label: "GRAPHIC DESIGN" },
   { id: "branding", label: "LOGO & BRANDING" },
+  { id: "art", label: "TRADITIONAL ART" },
 ];
 
 export const works: WorkItem[] = [

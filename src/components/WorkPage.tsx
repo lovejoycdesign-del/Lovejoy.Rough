@@ -6,6 +6,7 @@ import { PenIcon } from "@/components/icons";
 import { SocialLinks } from "@/components/SocialLinks";
 import {
   contact,
+  workCategoryOrder,
   workFilters,
   workPage,
   works,
@@ -229,8 +230,13 @@ export function WorkPage() {
   const [active, setActive] = useState<WorkItem | null>(null);
 
   const filtered = useMemo(() => {
-    if (filter === "all") return works;
-    return works.filter((item) => item.category === filter);
+    const list = filter === "all" ? works : works.filter((item) => item.category === filter);
+    return [...list].sort((a, b) => {
+      const rank =
+        workCategoryOrder.indexOf(a.category) - workCategoryOrder.indexOf(b.category);
+      if (rank !== 0) return rank;
+      return works.indexOf(a) - works.indexOf(b);
+    });
   }, [filter]);
 
   return (

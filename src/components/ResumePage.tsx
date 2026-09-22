@@ -198,14 +198,35 @@ export function ResumePage() {
             <div className="border border-white/10 bg-[#111] p-6 md:p-8">
               <SectionTitle icon={BriefcaseIcon}>EXPERIENCE</SectionTitle>
               <ol className="relative mt-6 space-y-7 border-l border-accent/40 pl-6">
-                {resumePage.experience.map((job) => (
-                  <li key={job.meta} className="relative">
-                    <span className="absolute top-1.5 -left-[1.9375rem] h-3 w-3 rounded-full bg-accent" />
-                    <h3 className="text-[15px] font-semibold text-white">{job.title}</h3>
-                    <p className="mt-1 text-[12px] tracking-wide text-accent/90">{job.meta}</p>
-                    <p className="mt-2 text-[13px] leading-relaxed text-white/65">{job.body}</p>
-                  </li>
-                ))}
+                {resumePage.experience.map((job) => {
+                  const href = "href" in job ? job.href : undefined;
+                  const company = "company" in job ? job.company : undefined;
+                  return (
+                    <li key={`${job.title}-${job.meta}`} className="relative">
+                      <span className="absolute top-1.5 -left-[1.9375rem] h-3 w-3 rounded-full bg-accent" />
+                      <h3 className="text-[15px] font-semibold text-white">{job.title}</h3>
+                      <p className="mt-1 text-[12px] tracking-wide text-accent/90">
+                        {href && company ? (
+                          <>
+                            <a
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline decoration-accent/50 underline-offset-4 transition hover:text-accent hover:decoration-accent"
+                            >
+                              {company}
+                            </a>
+                            {" · "}
+                            {job.meta}
+                          </>
+                        ) : (
+                          job.meta
+                        )}
+                      </p>
+                      <p className="mt-2 text-[13px] leading-relaxed text-white/65">{job.body}</p>
+                    </li>
+                  );
+                })}
               </ol>
             </div>
 

@@ -548,6 +548,13 @@ export const resumePage = {
   quote: "Design is more than aesthetics — it's about solving real problems.",
   experience: [
     {
+      title: "Design Strategist Intern",
+      company: "RELI Group Inc.",
+      href: "https://www.religroupinc.com/",
+      meta: "Health IT",
+      body: "Started as a Design Strategist Intern in the Health IT department. When my supervisor Bert Chiduza (bert@shumbafloors.com) retired, I was employed directly by the Director of Human Resources because I had become essential to the company.",
+    },
+    {
       title: "Digital Designer",
       meta: "LoveJoy Health · Baltimore, MD",
       body: "Assisted in the development and design of this mental health technology platform including websites, apps and etc.",

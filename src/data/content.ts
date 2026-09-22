@@ -394,7 +394,7 @@ export const works: WorkItem[] = [
   {
     id: "21",
     title: "LoveJoy Health",
-    medium: "Web Design, UI/UX",
+    medium: "Figma, Python, Java Script, CSS",
     size: "Desktop web",
     category: "digital",
     image: "/work/lovejoy-health.jpg",

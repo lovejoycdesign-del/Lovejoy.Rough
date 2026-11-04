@@ -1,0 +1,7 @@
+{
+  "name": "lovejoy-visuals-3d",
+  "private": true,
+  "scripts": {
+    "start": "py -m http.server 5173"
+  }
+}

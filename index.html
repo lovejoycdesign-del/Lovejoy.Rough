@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LJ Chirombo — Digital Designer</title>
+  <meta name="description" content="LJ Chirombo is a digital designer blending creativity and strategy to create meaningful experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=13" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='16' height='32' fill='white'/%3E%3Crect x='16' width='16' height='32' fill='%23f5a623'/%3E%3C/svg%3E" />
+</head>
+<body data-view="home">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+  <p class="rail">CREATIVE • INNOVATIVE • PURPOSE DRIVEN</p>
+  <p class="page-status" id="page-status" aria-live="polite"></p>
+
+  <template id="nav-template">
+    <header class="nav">
+      <a class="logo" href="#home" data-nav="home">
+        <span class="mark" aria-hidden="true"><span>L</span><span>J</span></span>
+        CHIROMBO
+      </a>
+      <nav aria-label="Primary">
+        <a href="#home" data-nav="home">HOME</a>
+        <a href="#about" data-nav="about">ABOUT</a>
+        <a href="#work" data-nav="work">WORK</a>
+        <a href="#skills" data-nav="skills">SKILLS</a>
+        <a href="#resume" data-nav="resume">RESUME</a>
+        <a href="#contact" data-nav="contact">CONTACT</a>
+      </nav>
+    </header>
+  </template>
+
+  <div class="stage" id="stage">
+    <article class="sheet" data-page="home" data-label="Home">
+      <div class="face front">
+        <div class="sheet-scroll">
+          <div class="home-flow">
+            <div class="nav-slot"></div>
+            <div class="home-main">
+              <section class="hero" aria-labelledby="hero-title">
+                <div class="hero-copy">
+                  <h1 id="hero-title">
+                    <span class="line">DIGITAL</span>
+                    <span class="line accent">
+                      DESIGNER
+                      <svg viewBox="0 0 320 18" preserveAspectRatio="none" aria-hidden="true">
+                        <path d="M2 11c28-6 56-3 84-5s56-7 84-3 56 8 84 6 42-3 62-2" stroke="#e85d04" stroke-width="7" stroke-linecap="round" />
+                        <path d="M6 13c30-4 58-1 86-3s54-5 82-1 52 5 78 3 40-2 58-1" stroke="#f5a623" stroke-width="5" stroke-linecap="round" />
+                      </svg>
+                    </span>
+                  </h1>
+                  <p class="lede">
+                    A digital creative with a passion for design, technology, and storytelling. I blend creativity and strategy to create meaningful experiences that inform, inspire, and leave a lasting impact.
+                  </p>
+                  <div class="actions">
+                    <a class="btn solid" href="#work" data-nav="work">VIEW MY WORK <span aria-hidden="true">→</span></a>
+                    <a class="btn ghost" href="#about" data-nav="about">ABOUT ME</a>
+                  </div>
+                  <p class="flip-hint">It turns slowly on its own. Click it, then drag sideways to turn it yourself. The corners turn the page.</p>
+                </div>
+                <div class="portrait-slot" data-portrait>
+                  <img src="assets/hero-portrait.png" alt="Painted portrait of Lovejoy Chirombo" />
+                  <div class="card-links" hidden>
+                    <a href="tel:4106997677">410-699-7677</a>
+                    <a href="mailto:lovejoyc.design@gmail.com">lovejoyc.design@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/lj-chirombo-758868271/" target="_blank" rel="noreferrer">LinkedIn · lj-chirombo</a>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <section class="services" aria-label="Practices">
+              <article class="service">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17v3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M13.5 6.5l3 3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                <div>
+                  <h3>DESIGN</h3>
+                  <p>Printmaking, Web Design, UI/UX, Branding</p>
+                </div>
+              </article>
+              <article class="service">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9.5v5l5-2.5-5-2.5z" fill="currentColor"/></svg>
+                <div>
+                  <h3>ANIMATION</h3>
+                  <p>2D Animation, 3D Animation, Motion Design</p>
+                </div>
+              </article>
+              <article class="service">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8L4 12l4 4M16 8l4 4-4 4M13 6l-2 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div>
+                  <h3>DEVELOPMENT</h3>
+                  <p>Python, JavaScript, CSS</p>
+                </div>
+              </article>
+              <article class="service">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 19c1.4-3 3.8-4.5 7-4.5S17.6 16 19 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <div>
+                  <h3>STRATEGY</h3>
+                  <p>Logistics, Financing, Problem Solving</p>
+                </div>
+              </article>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div class="face back" aria-hidden="true"><strong>Home</strong></div>
+    </article>
+
+    <article class="sheet" data-page="about" data-label="About">
+      <div class="face front">
+        <div class="sheet-scroll">
+          <div class="nav-slot"></div>
+          <div class="copy">
+            <p class="kicker">ABOUT ME</p>
+            <h1>MORE THAN DESIGN.<br /><span class="accent">IT'S PURPOSE.</span></h1>
+            <p class="intro">Hello, my name is Lovejoy Chirombo. I am a Bowie State University student attaining my Bachelor of Science in Visual Communications and Digital Media Arts. I was born in Harare, Zimbabwe circa June 10, 2003. I came to Baltimore, Maryland when I was two years old and graduated at Kenwood high school where I ran cross-country and track as well as played Basketball, go Bluebirds! I hope you sincerely enjoy my portfolio and please do not hesitate to contact me for any digital design work you would like me to do for you.</p>
+            <div class="actions">
+              <a class="btn solid" href="#contact" data-nav="contact">LET'S CONNECT <span aria-hidden="true">→</span></a>
+              <a class="btn ghost" href="#work" data-nav="work">VIEW MY WORK</a>
+            </div>
+
+            <p class="kicker">SKILLS &amp; EXPERTISE</p>
+            <h2>A DIGITAL DESIGNER</h2>
+            <ul class="plain-list columns">
+              <li>Printmaking</li>
+              <li>2D Animation</li>
+              <li>3D Animation</li>
+              <li>Traditional Art</li>
+              <li>Web Design</li>
+              <li>Programming (Python / JavaScript)</li>
+              <li>User Interface &amp; User Experience</li>
+              <li>Logistics</li>
+              <li>Financing</li>
+            </ul>
+
+            <ul class="chips">
+              <li><strong>Design</strong><span>Print · Web · UI/UX</span></li>
+              <li><strong>Animation</strong><span>2D · 3D · Motion</span></li>
+              <li><strong>Development</strong><span>Python · JavaScript</span></li>
+              <li><strong>Strategy</strong><span>Planning · Direction</span></li>
+              <li><strong>Art</strong><span>Traditional · Mixed Media</span></li>
+              <li><strong>Logistics</strong><span>Systems · Delivery</span></li>
+              <li><strong>Financing</strong><span>Budget · Growth</span></li>
+              <li><strong>Problem Solving</strong><span>Think · Iterate · Ship</span></li>
+              <li><strong>Passion</strong><span>Drive · Craft · Care</span></li>
+              <li><strong>Growth</strong><span>Learn · Push · Rise</span></li>
+            </ul>
+
+            <p class="kicker">BEYOND DESIGN</p>
+            <h2>INTERESTS &amp; PASSIONS</h2>
+            <p class="intro">Outside of design, these passions keep me curious, grounded, and creatively charged.</p>
+            <ul class="chips interests">
+              <li><strong>Music</strong><span>What moves my soul</span></li>
+              <li><strong>Basketball</strong><span>Discipline on and off the court</span></li>
+              <li><strong>Reading</strong><span>Fuel for growth</span></li>
+              <li><strong>Travel</strong><span>New places, new perspective</span></li>
+              <li><strong>Community</strong><span>Giving back, staying connected</span></li>
+            </ul>
+            <blockquote>I am a rising star with an unsatiable appetite for growth. I never stop learning, creating, and pushing forward.</blockquote>
+
+            <p class="kicker">MY JOURNEY</p>
+            <h2>GROWTH IN MOTION</h2>
+            <p class="intro">Every chapter has sharpened how I see, make, and create — from early sketchbooks to purposeful digital work.</p>
+            <ol class="timeline">
+              <li>
+                <h3>Early Beginnings</h3>
+                <p>A passion for art and storytelling took root — sketching, painting, and finding my voice.</p>
+              </li>
+              <li>
+                <h3>Education &amp; Growth</h3>
+                <p>Building digital design and animation skills while expanding craft across mediums.</p>
+              </li>
+              <li>
+                <h3>Exploring &amp; Building</h3>
+                <p>Working across diverse projects — from type posters to interfaces and brand systems.</p>
+              </li>
+              <li>
+                <h3>Purpose &amp; Impact</h3>
+                <p>Creating intentional designs that solve real problems and leave a lasting mark.</p>
+              </li>
+            </ol>
+
+            <p class="kicker">VALUES THAT SHAPE MY WORK</p>
+            <ul class="values">
+              <li>
+                <h3>Creativity</h3>
+                <p>Approach every challenge with an open mind and a willingness to explore.</p>
+              </li>
+              <li>
+                <h3>Innovation</h3>
+                <p>Strive to create original, forward-thinking work that stands apart.</p>
+              </li>
+              <li>
+                <h3>Purpose</h3>
+                <p>Design is about solving real problems — beauty with intention.</p>
+              </li>
+              <li>
+                <h3>Growth</h3>
+                <p>A commitment to constant learning, refining, and rising.</p>
+              </li>
+            </ul>
+
+            <blockquote>If I was to label my work I would say I am a “Digital Designer” with a plethora of hidden talents. I hope you enjoy my portfolio.</blockquote>
+            <p class="sign">LJ Chirombo</p>
+            <p class="sign-role">DIGITAL DESIGNER</p>
+            <div class="actions">
+              <a class="btn solid" href="#contact" data-nav="contact">LET'S CONNECT <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="face back" aria-hidden="true"><strong>About</strong></div>
+    </article>
+
+    <article class="sheet" data-page="work" data-label="Work">
+      <div class="face front">
+        <div class="sheet-scroll">
+          <div class="nav-slot"></div>
+          <div class="copy">
+            <p class="kicker">MY WORK</p>
+            <h1>WORK</h1>
+            <p class="intro">A collection of creative projects that represent my passion for art, design, animation, and digital media. Each piece tells a story and reflects my dedication to crafting meaningful visual experiences.</p>
+            <div class="work-toolbar">
+              <div class="filters" role="toolbar" aria-label="Filter work">
+                <button type="button" class="filter is-on" data-filter="all" aria-pressed="true">ALL WORK</button>
+                <button type="button" class="filter" data-filter="digital" aria-pressed="false">DIGITAL DESIGN</button>
+                <button type="button" class="filter" data-filter="animation" aria-pressed="false">ANIMATION</button>
+                <button type="button" class="filter" data-filter="graphic" aria-pressed="false">GRAPHIC DESIGN</button>
+                <button type="button" class="filter" data-filter="logo" aria-pressed="false">LOGO &amp; BRANDING</button>
+                <button type="button" class="filter" data-filter="traditional" aria-pressed="false">TRADITIONAL ART</button>
+              </div>
+              <div class="view-toggle" role="group" aria-label="Work layout">
+                <button type="button" class="view-btn is-on" data-view-mode="grid" aria-pressed="true" aria-label="Grid view">Grid</button>
+                <button type="button" class="view-btn" data-view-mode="list" aria-pressed="false" aria-label="List view">List</button>
+              </div>
+            </div>
+            <p class="work-count" id="work-count"></p>
+            <div class="work-grid" id="work-grid"></div>
+            <p class="empty" id="work-empty" hidden>No finished pieces in this set yet.</p>
+            <div class="closer">
+              <h2>LET'S CREATE SOMETHING AMAZING TOGETHER.</h2>
+              <p>I'm always open to new opportunities and exciting projects.</p>
+              <a class="btn solid" href="#contact" data-nav="contact">GET IN TOUCH <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="face back" aria-hidden="true"><strong>Work</strong></div>
+    </article>
+
+    <article class="sheet" data-page="skills" data-label="Skills">
+      <div class="face front">
+        <div class="sheet-scroll">
+          <div class="nav-slot"></div>
+          <div class="copy">
+            <p class="kicker">SKILLS</p>
+            <h1>CREATIVITY. STRATEGY.<br /><span class="accent">EXECUTION.</span></h1>
+            <p class="intro">I blend creativity, technical expertise, and real-world problem solving to design meaningful experiences that inform, inspire, and leave a lasting impact.</p>
+
+            <p class="kicker">WHAT I DO BEST</p>
+            <h2>FROM CONCEPT TO EXECUTION</h2>
+            <p class="intro">A diverse skill set that allows me to take ideas from concept to execution across multiple mediums and platforms.</p>
+            <div class="skill-groups">
+              <section>
+                <h3>DESIGN</h3>
+                <ul>
+                  <li>Printmaking</li>
+                  <li>Web Design</li>
+                  <li>UI/UX Design</li>
+                  <li>Branding</li>
+                </ul>
+              </section>
+              <section>
+                <h3>ANIMATION</h3>
+                <ul>
+                  <li>2D Animation</li>
+                  <li>3D Animation</li>
+                  <li>Storyboarding</li>
+                  <li>Motion Design</li>
+                </ul>
+              </section>
+              <section>
+                <h3>DEVELOPMENT</h3>
+                <ul>
+                  <li>Python Programming</li>
+                  <li>JavaScript</li>
+                  <li>CSS</li>
+                  <li>Problem Solving</li>
+                </ul>
+              </section>
+              <section>
+                <h3>STRATEGY</h3>
+                <ul>
+                  <li>Logistics</li>
+                  <li>Financing</li>
+                  <li>Planning</li>
+                  <li>Resource Management</li>
+                </ul>
+              </section>
+              <section>
+                <h3>ART</h3>
+                <ul>
+                  <li>3D Art</li>
+                  <li>Basic Drawing and Painting</li>
+                  <li>Mixed Media</li>
+                  <li>Digital Art</li>
+                </ul>
+              </section>
+              <section>
+                <h3>LOGISTICS</h3>
+                <ul>
+                  <li>Planning</li>
+                  <li>Coordination</li>
+                  <li>Operations</li>
+                  <li>Process Optimization</li>
+                </ul>
+              </section>
+              <section>
+                <h3>FINANCING</h3>
+                <ul>
+                  <li>Budgeting</li>
+                  <li>Analysis</li>
+                  <li>Resource Management</li>
+                  <li>Financial Planning</li>
+                </ul>
+              </section>
+              <section>
+                <h3>PROBLEM SOLVING</h3>
+                <ul>
+                  <li>Critical Thinking</li>
+                  <li>Creative Solutions</li>
+                  <li>Analytical Thinking</li>
+                  <li>Decision Making</li>
+                </ul>
+              </section>
+            </div>
+
+            <p class="kicker">TOOLS &amp; TECHNOLOGIES</p>
+            <ul class="tools">
+              <li><span>Ps</span>Photoshop</li>
+              <li><span>Ai</span>Illustrator</li>
+              <li><span>Id</span>InDesign</li>
+              <li><span>Ae</span>After Effects</li>
+              <li><span>Py</span>Python</li>
+              <li><span>JS</span>JavaScript</li>
+              <li><span>5</span>HTML5</li>
+              <li><span>3</span>CSS3</li>
+              <li><span>Fg</span>Figma</li>
+              <li><span>Ca</span>Canva</li>
+            </ul>
+
+            <p class="kicker">VALUES THAT SHAPE MY WORK</p>
+            <ul class="values">
+              <li>
+                <h3>Creativity</h3>
+                <p>I approach every challenge with curiosity and an open mind.</p>
+              </li>
+              <li>
+                <h3>Innovation</h3>
+                <p>I strive to create work that's original, effective, and forward-thinking.</p>
+              </li>
+              <li>
+                <h3>Purpose</h3>
+                <p>Design is more than aesthetics — it's about solving real problems.</p>
+              </li>
+              <li>
+                <h3>Growth</h3>
+                <p>I'm committed to learning, unlearning, and leveling up every day.</p>
+              </li>
+            </ul>
+
+            <div class="closer">
+              <h2>ALWAYS LEARNING. ALWAYS EVOLVING.</h2>
+              <p>I'm a lifelong learner — constantly sharpening my craft, exploring new tools, and growing as a Digital Designer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="face back" aria-hidden="true"><strong>Skills</strong></div>
+    </article>
+
+    <article class="sheet" data-page="resume" data-label="Resume">
+      <div class="face front">
+        <div class="sheet-scroll">
+          <div class="nav-slot"></div>
+          <div class="copy">
+            <p class="kicker">RESUME</p>
+            <h1>DIGITAL DESIGNER.<br />PROBLEM SOLVER.<br /><span class="accent">LIFELONG LEARNER.</span></h1>
+            <p class="intro">I blend creativity, technical expertise, and strategy to design meaningful experiences that inform, inspire, and leave a lasting impact.</p>
+            <p class="contact-line"><a href="mailto:lovejoyc.design@gmail.com">lovejoyc.design@gmail.com</a></p>
+
+            <p class="kicker">EDUCATION</p>
+            <div class="split">
+              <article class="edu">
+                <h3>Bachelor of Science</h3>
+                <p>Visual Communication and Digital Media Arts</p>
+                <p class="where">Bowie State University</p>
+              </article>
+              <article class="edu">
+                <h3>High School Graduate</h3>
+                <p class="where">Kenwood High School (Baltimore, MD)</p>
+              </article>
+            </div>
+
+            <p class="kicker">SKILLS SUMMARY</p>
+            <p class="intro">A broad mix of creative, technical, and strategic skills from coursework and hands-on projects.</p>
+            <ul class="plain-list columns">
+              <li>Printmaking</li>
+              <li>2D Animation</li>
+              <li>3D Animation</li>
+              <li>Traditional Art</li>
+              <li>Web Design</li>
+              <li>UI/UX Design</li>
+              <li>Python Programming</li>
+              <li>JavaScript Programming</li>
+              <li>User Interface Design</li>
+              <li>User Experience Design</li>
+              <li>Logistics</li>
+              <li>Financing</li>
+            </ul>
+
+            <p class="kicker">TOOLS &amp; TECHNOLOGIES</p>
+            <ul class="tools">
+              <li><span>Ps</span>Photoshop</li>
+              <li><span>Ai</span>Illustrator</li>
+              <li><span>Id</span>InDesign</li>
+              <li><span>Ae</span>After Effects</li>
+              <li><span>Py</span>Python</li>
+              <li><span>JS</span>JavaScript</li>
+              <li><span>5</span>HTML5</li>
+              <li><span>3</span>CSS3</li>
+              <li><span>Fg</span>Figma</li>
+              <li><span>Ca</span>Canva</li>
+              <li><span>Tt</span>Traditional Tools</li>
+            </ul>
+
+            <p class="kicker">INTERESTS</p>
+            <ul class="chips interests">
+              <li><strong>Music</strong></li>
+              <li><strong>Basketball</strong></li>
+              <li><strong>Reading</strong></li>
+              <li><strong>Travel</strong></li>
+              <li><strong>Community</strong></li>
+            </ul>
+
+            <blockquote>“Design is more than aesthetics — it's about solving real problems.”</blockquote>
+
+            <p class="kicker">EXPERIENCE</p>
+            <ol class="experience">
+              <li>
+                <h3>Design Strategist Intern</h3>
+                <p class="where">RELI Group Inc. · Baltimore, MD</p>
+                <p>While working in the Health IT department I assisted with the development and design of government software. Helped process contracts, assisted with background checks as well as onboarding, pre-onboarding and terminations. Worked with organizations like the Centers for Medicare &amp; Medicaid Services, Centers for Disease Control and Prevention and the Transportation Security Administration. When my supervisor Bert Chiduza (bert@shumbafloors.com) retired, I was employed directly by the Director of Human Resources and worked closely with the Director of Marketing. During this process I learned about the inner workings of running a successful tech company, real-world marketing, advertisement skills and corporate etiquette.</p>
+              </li>
+              <li>
+                <h3>Digital Designer</h3>
+                <p class="where">LoveJoy Health · Houston, TX</p>
+                <p>Assisted in the development and design of this mental health technology platform including websites, apps and etc.</p>
+              </li>
+              <li>
+                <h3>Digital Designer</h3>
+                <p class="where">Athletegum · Houston, TX</p>
+                <p>Designed the AthleteGum website so athletes can get paid for real work, securely and transparently, with NIL deals that release payment after work is delivered and approved.</p>
+              </li>
+              <li>
+                <h3>Creative Director &amp; Manager</h3>
+                <p class="where">Daprinxe · Salisbury, MD</p>
+                <p>Designed the Daprinxe artist website in Adobe InDesign and Adobe XD — home, new music, videos, merch, and contact — and supported brand-adjacent digital work.</p>
+              </li>
+              <li>
+                <h3>Freelance Digital Design</h3>
+                <p class="where">LovejoyVisuals · Baltimore, MD</p>
+                <p>Posters, packaging, magazine covers, and branding for clients and course projects, including Green Street, Bomb Berries, and the Bowie State Job Fair.</p>
+              </li>
+              <li>
+                <h3>Visual Communication and Digital Media Arts Student</h3>
+                <p class="where">Bowie State University · Bowie, MD</p>
+                <p>Studio and coursework in graphic design, traditional art, UI/UX, and digital media arts, taking projects from concept to finished pieces.</p>
+              </li>
+            </ol>
+
+            <p class="kicker">PROJECT HIGHLIGHTS</p>
+            <ul class="chips">
+              <li><strong>Traditional &amp; Digital Art</strong><span>10+ Pieces</span></li>
+              <li><strong>Animation</strong><span>2D &amp; 3D Projects</span></li>
+              <li><strong>Graphic Design</strong><span>Posters, Logos &amp; Ads</span></li>
+              <li><strong>Development</strong><span>Python &amp; JavaScript</span></li>
+              <li><strong>UI/UX Design</strong><span>Mobile App Concepts</span></li>
+            </ul>
+
+            <p class="kicker">ACHIEVEMENTS</p>
+            <ul class="plain-list">
+              <li>Kenwood High School graduate (Baltimore, MD) — ran cross-country and track and played basketball; go Bluebirds!</li>
+              <li>Pursuing a Bachelor of Science in Visual Communication and Digital Media Arts at Bowie State University</li>
+              <li>Designed the LoveJoy Health website for connected behavioral healthcare</li>
+              <li>Designed the Daprinxe artist website, including home, music, merch, and signup</li>
+              <li>Built a portfolio of type posters, packaging, magazine covers, UI concepts, and traditional painting</li>
+            </ul>
+
+            <div class="closer">
+              <h2>LET'S CREATE SOMETHING AMAZING TOGETHER.</h2>
+              <p>I'm always open to new opportunities and exciting projects.</p>
+              <a class="btn solid" href="#contact" data-nav="contact">GET IN TOUCH <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="face back" aria-hidden="true"><strong>Resume</strong></div>
+    </article>
+
+    <article class="sheet" data-page="contact" data-label="Contact">
+      <div class="face front">
+        <div class="sheet-scroll">
+          <div class="nav-slot"></div>
+          <div class="copy">
+            <p class="kicker">CONTACT</p>
+            <h1>LET'S CREATE SOMETHING<br /><span class="accent">AMAZING TOGETHER.</span></h1>
+            <p class="intro">I'm always open to new opportunities and exciting projects. Whether you have a question, want to collaborate, or just want to say hello — I'd love to hear from you.</p>
+
+            <dl class="facts">
+              <div>
+                <dt>EMAIL</dt>
+                <dd><a href="mailto:lovejoyc.design@gmail.com">lovejoyc.design@gmail.com</a></dd>
+              </div>
+              <div>
+                <dt>LINKEDIN</dt>
+                <dd><a href="https://www.linkedin.com/in/lj-chirombo-758868271/" target="_blank" rel="noreferrer">lj-chirombo</a></dd>
+              </div>
+              <div>
+                <dt>PHONE</dt>
+                <dd><a href="tel:4106997677">410-699-7677</a></dd>
+              </div>
+              <div>
+                <dt>LOCATION</dt>
+                <dd>Baltimore, MD</dd>
+              </div>
+            </dl>
+
+            <p class="kicker">LET'S CONNECT ABOUT</p>
+            <ul class="plain-list">
+              <li>Creative projects and collaborations</li>
+              <li>Design, animation, and digital experiences</li>
+              <li>Opportunities to make an impact</li>
+              <li>Questions or just saying hello!</li>
+            </ul>
+
+            <blockquote>“Design is more than aesthetics — it's about solving real problems.”</blockquote>
+
+            <p class="kicker">THINGS THAT INSPIRE ME</p>
+            <ul class="chips interests">
+              <li><strong>Music</strong><span>What moves my soul.</span></li>
+              <li><strong>Basketball</strong><span>Discipline on and off the court.</span></li>
+              <li><strong>Reading</strong><span>Fuel for growth.</span></li>
+              <li><strong>Travel</strong><span>New places, new perspective.</span></li>
+              <li><strong>Community</strong><span>Giving back, staying connected.</span></li>
+            </ul>
+
+            <div class="closer">
+              <h2>READY TO WORK TOGETHER?</h2>
+              <p>I'm excited to bring your ideas to life and create something amazing together.</p>
+              <p class="sign-role">CREATIVE MIND. PROBLEM SOLVER. LIFELONG LEARNER.</p>
+              <a class="btn solid" href="mailto:lovejoyc.design@gmail.com">EMAIL ME <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="face back" aria-hidden="true"><strong>Contact</strong></div>
+    </article>
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" id="lightbox-close">Close</button>
+    <figure>
+      <img id="lightbox-img" alt="" />
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.js"
+    }
+  }
+  </script>
+  <script type="module" src="js/main.js?v=11"></script>
+</body>
+</html>

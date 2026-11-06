@@ -42,6 +42,14 @@ export const projects = [
     summary: "A potential design for the user interface of a mobile phone app.",
   },
   {
+    title: "The Price of a Puff",
+    video: "assets/work/the-price-of-a-puff.mp4",
+    category: "animation",
+    tools: "Adobe Premier, Adobe After Effects, Adobe XD, Adobe Illustrator",
+    size: "1920×1080 · 9:52",
+    summary: "An educational animated infographic about the harms and dangers of vaping and nicotine addiction.",
+  },
+  {
     title: "Montana of 300 Chiraq L-mix",
     image: "assets/work/montana-of-300.png",
     category: "graphic",

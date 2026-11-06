@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=13" />
+  <link rel="stylesheet" href="css/style.css?v=22" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='16' height='32' fill='white'/%3E%3Crect x='16' width='16' height='32' fill='%23f5a623'/%3E%3C/svg%3E" />
 </head>
 <body data-view="home">
@@ -44,18 +44,22 @@
               <section class="hero" aria-labelledby="hero-title">
                 <div class="hero-copy">
                   <h1 id="hero-title">
-                    <span class="line">DIGITAL</span>
+                    <span class="line">Lovejoy</span>
                     <span class="line accent">
-                      DESIGNER
-                      <svg viewBox="0 0 320 18" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M2 11c28-6 56-3 84-5s56-7 84-3 56 8 84 6 42-3 62-2" stroke="#e85d04" stroke-width="7" stroke-linecap="round" />
-                        <path d="M6 13c30-4 58-1 86-3s54-5 82-1 52 5 78 3 40-2 58-1" stroke="#f5a623" stroke-width="5" stroke-linecap="round" />
-                      </svg>
+                      Visuals
+                      <span class="tech-line" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
                     </span>
                   </h1>
                   <p class="lede">
-                    A digital creative with a passion for design, technology, and storytelling. I blend creativity and strategy to create meaningful experiences that inform, inspire, and leave a lasting impact.
+                    A creative digital agency transforming ideas into powerful visual experiences through innovative design, branding, web development, animation, and digital media. We combine creativity with technology to build distinctive brands, engaging digital experiences, and visuals that leave lasting impressions.
                   </p>
+                  <blockquote class="hero-quote">
+                    <p>“Lovejoy Visuals is the bridge where human ingenuity and computer capabilities coordinate”</p>
+                    <footer>
+                      <cite>~ Lovejoy Chirombo</cite>
+                      <span>Founder and CEO</span>
+                    </footer>
+                  </blockquote>
                   <div class="actions">
                     <a class="btn solid" href="#work" data-nav="work">VIEW MY WORK <span aria-hidden="true">→</span></a>
                     <a class="btn ghost" href="#about" data-nav="about">ABOUT ME</a>
@@ -574,6 +578,7 @@
     <button type="button" class="lightbox-close" id="lightbox-close">Close</button>
     <figure>
       <img id="lightbox-img" alt="" />
+      <video id="lightbox-video" controls playsinline hidden></video>
       <figcaption id="lightbox-caption"></figcaption>
     </figure>
   </div>
@@ -585,6 +590,6 @@
     }
   }
   </script>
-  <script type="module" src="js/main.js?v=11"></script>
+  <script type="module" src="js/main.js?v=12"></script>
 </body>
 </html>

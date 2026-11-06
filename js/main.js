@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { projects } from "./catalog.js?v=1";
+import { projects } from "./catalog.js?v=2";
 
 const TITLES = {
   home: "LJ Chirombo — Digital Designer",
@@ -20,6 +20,7 @@ const cardLinks = slot.querySelector(".card-links");
 const serviceCards = [...document.querySelectorAll(".service")];
 const lightbox = document.querySelector("#lightbox");
 const lightboxImg = document.querySelector("#lightbox-img");
+const lightboxVideo = document.querySelector("#lightbox-video");
 const lightboxCaption = document.querySelector("#lightbox-caption");
 
 const flip = { index: 0, progress: 0, dest: 0, busy: false };
@@ -324,10 +325,16 @@ projects.forEach((project, index) => {
   const visit = project.href
     ? `<a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">VISIT SITE</a>`
     : "";
+  const shot = project.video
+    ? `<div class="work-shot work-shot-video">
+        <video src="${project.video}" controls playsinline preload="metadata"></video>
+        <button class="enlarge" type="button">ENLARGE</button>
+      </div>`
+    : `<button class="work-shot" type="button" aria-label="Enlarge ${project.title}">
+        <img src="${project.image}" alt="${project.title}" />
+      </button>`;
   card.innerHTML = `
-    <button class="work-shot" type="button" aria-label="Enlarge ${project.title}">
-      <img src="${project.image}" alt="${project.title}" />
-    </button>
+    ${shot}
     <div class="work-meta">
       <p class="work-index">${number}</p>
       <h3></h3>
@@ -341,7 +348,8 @@ projects.forEach((project, index) => {
   meta[1].textContent = project.tools;
   meta[2].textContent = project.size;
   meta[3].textContent = project.summary;
-  card.querySelector(".work-shot").addEventListener("click", () => openLightbox(project));
+  const opener = card.querySelector(".enlarge") || card.querySelector(".work-shot");
+  opener.addEventListener("click", () => openLightbox(project));
   grid.appendChild(card);
 });
 
@@ -381,14 +389,29 @@ document.querySelectorAll(".view-btn").forEach((button) => {
 });
 
 function openLightbox(project) {
-  lightboxImg.src = project.image;
-  lightboxImg.alt = project.title;
+  if (project.video) {
+    lightboxImg.hidden = true;
+    lightboxImg.removeAttribute("src");
+    lightboxVideo.hidden = false;
+    lightboxVideo.src = project.video;
+    lightboxVideo.play().catch(() => {});
+  } else {
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute("src");
+    lightboxVideo.hidden = true;
+    lightboxImg.hidden = false;
+    lightboxImg.src = project.image;
+    lightboxImg.alt = project.title;
+  }
   lightboxCaption.textContent = `${project.title} — ${project.summary}`;
   lightbox.hidden = false;
   lightboxOpen = true;
 }
 
 function closeLightbox() {
+  lightboxVideo.pause();
+  lightboxVideo.removeAttribute("src");
+  lightboxVideo.load();
   lightbox.hidden = true;
   lightboxOpen = false;
   lightboxImg.removeAttribute("src");

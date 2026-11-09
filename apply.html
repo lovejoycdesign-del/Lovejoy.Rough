@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Application — Lovejoy Visuals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=35" />
+</head>
+<body class="site-page">
+  <header class="nav">
+    <a class="logo" href="index.html#home">
+      <span class="mark" aria-hidden="true"><span>L</span><span>J</span></span>
+      CHIROMBO
+    </a>
+    <nav aria-label="Primary">
+      <a href="index.html#home">HOME</a>
+      <a href="index.html#about">ABOUT</a>
+      <a href="index.html#work">WORK</a>
+      <a href="index.html#skills">SKILLS</a>
+      <a href="index.html#resume">RESUME</a>
+      <a href="index.html#contact">CONTACT</a>
+    </nav>
+  </header>
+  <main class="site-wrap">
+    <p class="kicker page-name">APPLICATION</p>
+    <h1 class="display-title" id="role-title">Application</h1>
+    <p class="intro" id="role-summary"></p>
+    <form class="application" id="application">
+      <section>
+        <h2>RESUME</h2>
+        <label>Upload your resume
+          <input id="resume" name="resume" type="file" accept=".pdf,.doc,.docx,application/pdf" />
+        </label>
+        <p id="resume-note"></p>
+      </section>
+      <section>
+        <h2>SKILLS FOR THIS ROLE</h2>
+        <p id="skill-help">Check only what you can do in this department. You do not need every item.</p>
+        <p class="skill-count" id="skill-count"></p>
+        <div class="skill-board" id="skills"></div>
+      </section>
+      <section>
+        <h2>EDUCATION</h2>
+        <label>School <input name="school" type="text" autocomplete="organization" /></label>
+        <label>Credential <input name="credential" type="text" /></label>
+        <label>Years <input name="years" type="text" placeholder="2022–2026" /></label>
+      </section>
+      <section>
+        <h2>EXPERIENCE</h2>
+        <div id="experience"></div>
+        <button class="btn ghost" id="add-experience" type="button">ADD ANOTHER ROLE</button>
+      </section>
+      <section>
+        <h2>CONTACT</h2>
+        <label>Name <input name="name" type="text" autocomplete="name" required /></label>
+        <label>Email <input name="email" type="email" autocomplete="email" required /></label>
+        <label>Phone <input name="phone" type="tel" autocomplete="tel" /></label>
+        <label>Location <input name="location" type="text" autocomplete="address-level2" /></label>
+      </section>
+      <p class="form-status" id="status" role="status"></p>
+      <div class="form-actions">
+        <button class="btn solid" id="save-continue" type="button">SAVE AND CONTINUE</button>
+        <button class="btn ghost" id="save-exit" type="button">SAVE AND EXIT</button>
+      </div>
+    </form>
+  </main>
+  <script type="importmap">
+  { "imports": { "three": "./vendor/three.module.js" } }
+  </script>
+  <script type="module" src="js/stars.js?v=1"></script>
+  <script type="module" src="js/apply.js?v=2"></script>
+</body>
+</html>

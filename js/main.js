@@ -15,8 +15,11 @@ const stage = document.querySelector("#stage");
 const pages = [...document.querySelectorAll(".sheet")];
 const status = document.querySelector("#page-status");
 const copy = document.querySelector(".hero-copy");
-const slot = document.querySelector("[data-portrait]");
-const cardLinks = slot.querySelector(".card-links");
+const portraitSlots = [...document.querySelectorAll("[data-portrait]")];
+const portraitPages = new Set(["home", "about", "work", "skills"]);
+function activeSlot() {
+  return document.querySelector(`[data-page="${document.body.dataset.view}"] [data-portrait]`);
+}
 const serviceCards = [...document.querySelectorAll(".service")];
 const lightbox = document.querySelector("#lightbox");
 const lightboxImg = document.querySelector("#lightbox-img");
@@ -53,44 +56,53 @@ function paint() {
   const turning = Math.abs(progress) > 0.001;
   const dest = turning ? flip.dest : flip.index;
   document.body.classList.toggle("is-turning", turning);
+  const turn = Math.min(Math.abs(progress), 1);
 
   pages.forEach((sheet, i) => {
     let angle = 0;
     let show = i === flip.index;
     let z = i === flip.index ? 30 : 1;
+    let opacity = show ? 1 : 0;
+    let scale = 1;
 
     if (progress > 0) {
       if (i === flip.index) {
-        angle = -progress * 180;
+        angle = -turn * 78;
         show = true;
         z = 40;
+        opacity = 1 - turn;
       } else if (i === dest) {
-        angle = 0;
         show = true;
         z = 20;
+        opacity = turn;
+        scale = 0.985 + turn * 0.015;
       }
     } else if (progress < 0) {
       if (i === dest) {
-        angle = -180 * (1 + progress);
+        angle = -78 * (1 - turn);
         show = true;
         z = 40;
+        opacity = turn;
+        scale = 0.985 + turn * 0.015;
       } else if (i === flip.index) {
-        angle = 0;
         show = true;
         z = 20;
+        opacity = 1 - turn;
+        scale = 1 - turn * 0.015;
       }
     }
 
-    const shade = Math.sin((Math.min(Math.abs(angle), 180) * Math.PI) / 180);
-    const lift = shade * 36;
-    sheet.style.transform = `rotateY(${angle}deg) translateZ(${lift}px)`;
+    const shade = Math.sin(turn * Math.PI);
+    const lift = shade * 18;
+    sheet.style.transform = `rotateY(${angle}deg) translateZ(${lift}px) scale(${scale})`;
+    sheet.style.opacity = String(show ? opacity : 0);
     sheet.style.zIndex = String(z);
     sheet.style.visibility = show ? "visible" : "hidden";
     sheet.inert = !show;
     sheet.setAttribute("aria-hidden", show ? "false" : "true");
     const sheen = sheet.querySelector(".sheen");
     const moving = progress > 0 ? i === flip.index : progress < 0 && i === dest;
-    if (sheen) sheen.style.opacity = moving ? String(shade * 0.8) : "0";
+    if (sheen) sheen.style.opacity = moving ? String(shade * 0.35) : "0";
     if (moving) {
       const strong = sheet.querySelector(".face.back strong");
       if (strong) strong.textContent = pages[dest].dataset.label;
@@ -133,9 +145,14 @@ function settle(dest, push) {
   const scroller = pages[dest].querySelector(".sheet-scroll");
   if (scroller) scroller.scrollTop = 0;
   sync(push);
+  if (typeof resetPortraitSpin === "function") resetPortraitSpin();
 }
 
-function animateTo(from, to, dest) {
+function easeInOut(t) {
+  return t < 0.5 ? 4 * t * t * t : 1 - ((-2 * t + 2) ** 3) / 2;
+}
+
+function animateTo(from, to, dest, fromDrag) {
   if (reduceMotion || from === to) {
     if (to === 0) {
       flip.progress = 0;
@@ -150,11 +167,12 @@ function animateTo(from, to, dest) {
   flip.busy = true;
   flip.dest = dest;
   const start = performance.now();
-  const duration = 720;
+  const distance = Math.abs(to - from);
+  const duration = fromDrag ? Math.max(460, Math.round(820 * distance)) : 1080;
 
   function tick(now) {
     const t = Math.min(1, (now - start) / duration);
-    const eased = 1 - (1 - t) ** 3;
+    const eased = fromDrag ? 1 - (1 - t) ** 3 : easeInOut(t);
     flip.progress = from + (to - from) * eased;
     paint();
     if (t < 1) {
@@ -232,10 +250,10 @@ function endDrag(event) {
   suppressClick = true;
   if (Math.abs(progress) > 0.22) {
     const direction = progress > 0 ? 1 : -1;
-    animateTo(progress, direction, nextIndex(direction));
+    animateTo(progress, direction, nextIndex(direction), true);
     return;
   }
-  animateTo(progress, 0, flip.dest);
+  animateTo(progress, 0, flip.dest, true);
 }
 
 stage.addEventListener("pointerup", endDrag);
@@ -330,9 +348,13 @@ projects.forEach((project, index) => {
         <video src="${project.video}" controls playsinline preload="metadata"></video>
         <button class="enlarge" type="button">ENLARGE</button>
       </div>`
-    : `<button class="work-shot" type="button" aria-label="Enlarge ${project.title}">
-        <img src="${project.image}" alt="${project.title}" />
-      </button>`;
+    : project.title === "LoveJoy Health"
+      ? `<a class="work-shot work-shot-link" href="https://lovejoy.health/" target="_blank" rel="noreferrer" aria-label="Open LoveJoy Health">
+          <img src="${project.image}" alt="LoveJoy Health" />
+        </a>`
+      : `<button class="work-shot" type="button" aria-label="Enlarge ${project.title}">
+          <img src="${project.image}" alt="${project.title}" />
+        </button>`;
   card.innerHTML = `
     ${shot}
     <div class="work-meta">
@@ -348,8 +370,8 @@ projects.forEach((project, index) => {
   meta[1].textContent = project.tools;
   meta[2].textContent = project.size;
   meta[3].textContent = project.summary;
-  const opener = card.querySelector(".enlarge") || card.querySelector(".work-shot");
-  opener.addEventListener("click", () => openLightbox(project));
+  const opener = card.querySelector(".enlarge") || card.querySelector("button.work-shot");
+  if (opener) opener.addEventListener("click", () => openLightbox(project));
   grid.appendChild(card);
 });
 
@@ -425,7 +447,7 @@ lightbox.addEventListener("click", (event) => {
 applyFilter();
 
 const canvas = document.querySelector("#scene");
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 renderer.setClearColor(0x000000, 1);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -504,43 +526,58 @@ const portraitTurn = {
 };
 let portraitClock = performance.now();
 
-slot.addEventListener("pointerdown", (event) => {
-  if (event.button !== 0) return;
-  event.stopPropagation();
-  portraitTurn.auto = false;
-  portraitTurn.vy = 0;
-  if (event.target.closest("a")) return;
-  portraitTurn.held = true;
-  portraitTurn.steered = true;
-  portraitTurn.vx = 0;
-  portraitTurn.vy = 0;
-  portraitTurn.lastX = event.clientX;
-  portraitTurn.lastY = event.clientY;
-  portraitTurn.id = event.pointerId;
-  slot.classList.add("is-turning");
-  try { slot.setPointerCapture(event.pointerId); } catch { /* pointer already released */ }
-});
-
-slot.addEventListener("pointermove", (event) => {
-  if (!portraitTurn.held || event.pointerId !== portraitTurn.id) return;
-  const dx = event.clientX - portraitTurn.lastX;
-  portraitTurn.y += dx * 0.012;
+function resetPortraitSpin() {
   portraitTurn.x = 0;
-  portraitTurn.vy = dx * 0.012;
+  portraitTurn.y = 0;
   portraitTurn.vx = 0;
-  portraitTurn.lastX = event.clientX;
-  portraitTurn.lastY = event.clientY;
+  portraitTurn.vy = 0;
+  portraitTurn.held = false;
+  portraitTurn.steered = false;
+  portraitTurn.auto = !reduceMotion;
+  portraitSlots.forEach((slot) => slot.classList.remove("is-turning"));
+}
+
+portraitSlots.forEach((slot) => {
+  slot.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0 || slot !== activeSlot()) return;
+    event.stopPropagation();
+    portraitTurn.auto = false;
+    portraitTurn.vy = 0;
+    if (event.target.closest("a")) return;
+    portraitTurn.held = true;
+    portraitTurn.steered = true;
+    portraitTurn.vx = 0;
+    portraitTurn.vy = 0;
+    portraitTurn.lastX = event.clientX;
+    portraitTurn.lastY = event.clientY;
+    portraitTurn.id = event.pointerId;
+    slot.classList.add("is-turning");
+    try { slot.setPointerCapture(event.pointerId); } catch { /* pointer already released */ }
+  });
+
+  slot.addEventListener("pointermove", (event) => {
+    if (!portraitTurn.held || event.pointerId !== portraitTurn.id) return;
+    const dx = event.clientX - portraitTurn.lastX;
+    portraitTurn.y += dx * 0.012;
+    portraitTurn.x = 0;
+    portraitTurn.vy = dx * 0.012;
+    portraitTurn.vx = 0;
+    portraitTurn.lastX = event.clientX;
+    portraitTurn.lastY = event.clientY;
+  });
+
+  slot.addEventListener("pointerup", releasePortrait);
+  slot.addEventListener("pointercancel", releasePortrait);
 });
 
 function releasePortrait(event) {
   if (!portraitTurn.held || event.pointerId !== portraitTurn.id) return;
   portraitTurn.held = false;
-  slot.classList.remove("is-turning");
+  portraitSlots.forEach((slot) => slot.classList.remove("is-turning"));
 }
 
-slot.addEventListener("pointerup", releasePortrait);
-slot.addEventListener("pointercancel", releasePortrait);
-slot.addEventListener("dblclick", () => {
+document.addEventListener("dblclick", (event) => {
+  if (!event.target.closest("[data-portrait]")) return;
   portraitTurn.steered = false;
   portraitTurn.vx = 0;
   portraitTurn.vy = 0;
@@ -556,6 +593,8 @@ function resize() {
 }
 
 function fitPortrait() {
+  const slot = activeSlot();
+  if (!slot) return;
   const rect = slot.getBoundingClientRect();
   if (!rect.width || !rect.height) return;
   const distance = Math.max(camera.position.z - portraitGroup.position.z, 0.4);
@@ -593,7 +632,10 @@ function frame() {
     portraitTurn.vy *= 0.94;
   }
 
-  const showPortrait = document.body.dataset.view === "home" && !document.body.classList.contains("is-turning");
+  const showPortrait = portraitPages.has(document.body.dataset.view) && !document.body.classList.contains("is-turning");
+  document.body.classList.remove("portrait-overlay");
+  renderer.setClearAlpha(1);
+  background.visible = true;
   portraitGroup.visible = showPortrait;
   portraitTurn.x = 0;
   portraitTurn.vx = 0;
@@ -610,7 +652,10 @@ function frame() {
     && !portraitTurn.held
     && Math.abs(Math.abs(yaw) - Math.PI) < 0.55
     && Math.abs(pitch) < 0.6;
-  cardLinks.hidden = !showingBack;
+  const current = activeSlot();
+  document.querySelectorAll(".card-links").forEach((links) => {
+    links.hidden = !(showingBack && current && links.parentElement === current);
+  });
 
   background.position.x = pointer.x * -0.45;
   background.position.y = pointer.y * 0.22;

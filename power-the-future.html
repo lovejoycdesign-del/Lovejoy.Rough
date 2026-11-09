@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Power the Future — Lovejoy Visuals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=39" />
+</head>
+<body class="site-page">
+  <header class="nav">
+    <a class="logo" href="index.html#home">
+      <span class="mark" aria-hidden="true"><span>L</span><span>J</span></span>
+      CHIROMBO
+    </a>
+    <nav aria-label="Primary">
+      <a href="index.html#home">HOME</a>
+      <a href="index.html#about">ABOUT</a>
+      <a href="index.html#work">WORK</a>
+      <a href="index.html#skills">SKILLS</a>
+      <a href="index.html#resume">RESUME</a>
+      <a href="index.html#contact">CONTACT</a>
+    </nav>
+  </header>
+  <main class="site-wrap tip-page">
+    <h1 class="display-title">POWER THE FUTURE</h1>
+    <p class="intro">Digitalizing your dreams one website at a time. For payments, investments or support please scan this code below.</p>
+    <img class="tip-qr" src="assets/power-the-future-qr.svg?v=2" width="280" height="280" alt="QR code to pay $LovejoyVisuals on Cash App" />
+    <p class="cashtag">$LovejoyVisuals</p>
+    <a class="btn solid" id="cash-app" href="https://cash.app/$LovejoyVisuals">OPEN CASH APP <span aria-hidden="true">→</span></a>
+  </main>
+  <script>
+    const pay = document.getElementById("cash-app");
+    const phone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (!phone) {
+      pay.target = "_blank";
+      pay.rel = "noreferrer";
+    }
+  </script>
+  <script type="importmap">
+  { "imports": { "three": "./vendor/three.module.js" } }
+  </script>
+  <script type="module" src="js/stars.js?v=1"></script>
+</body>
+</html>

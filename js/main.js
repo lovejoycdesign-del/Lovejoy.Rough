@@ -11,6 +11,8 @@ const TITLES = {
 };
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const phoneLayout = window.matchMedia("(max-width: 800px)");
+phoneLayout.addEventListener("change", () => paint());
 const stage = document.querySelector("#stage");
 const pages = [...document.querySelectorAll(".sheet")];
 const status = document.querySelector("#page-status");
@@ -94,7 +96,9 @@ function paint() {
 
     const shade = Math.sin(turn * Math.PI);
     const lift = shade * 18;
-    sheet.style.transform = `rotateY(${angle}deg) translateZ(${lift}px) scale(${scale})`;
+    sheet.style.transform = phoneLayout.matches
+      ? "none"
+      : `rotateY(${angle}deg) translateZ(${lift}px) scale(${scale})`;
     sheet.style.opacity = String(show ? opacity : 0);
     sheet.style.zIndex = String(z);
     sheet.style.visibility = show ? "visible" : "hidden";
@@ -153,7 +157,7 @@ function easeInOut(t) {
 }
 
 function animateTo(from, to, dest, fromDrag) {
-  if (reduceMotion || from === to) {
+  if (reduceMotion || phoneLayout.matches || from === to) {
     if (to === 0) {
       flip.progress = 0;
       flip.busy = false;
@@ -210,6 +214,7 @@ function goToPage(name) {
 stage.addEventListener("pointerdown", (event) => {
   if (flip.busy || lightboxOpen || event.button !== 0) return;
   const peel = event.target.closest(".peel");
+  if (phoneLayout.matches && !peel) return;
   if (!peel && event.target.closest("a, button, input, textarea, select, label")) return;
   drag = {
     id: event.pointerId,

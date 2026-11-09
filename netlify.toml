@@ -1,0 +1,6 @@
+[build]
+  command = "rm -rf site && mkdir site && tar --exclude=site --exclude=.git --exclude=node_modules -cf - . | tar -C site -xf -"
+  publish = "site"
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"

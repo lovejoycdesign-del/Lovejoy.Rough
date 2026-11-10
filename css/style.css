@@ -1429,6 +1429,7 @@ body.site-page { overflow: auto; }
     width: min(100%, 420px);
     max-height: 46vh;
     margin: 4px auto 8px;
+    touch-action: pan-y;
   }
   .hero h1 {
     font-size: clamp(46px, 13vw, 72px);

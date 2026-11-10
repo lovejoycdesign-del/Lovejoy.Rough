@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { projects } from "./catalog.js?v=2";
 
 const TITLES = {
-  home: "LOVEJOY VISUALS — A digital Agency",
+  home: "LOVEJOY VISUALS — Digital Agency",
   about: "About — LJ Chirombo",
   work: "Work — LJ Chirombo",
   skills: "Skills — LJ Chirombo",
@@ -487,7 +487,10 @@ const portraitTurn = {
   vy: 0,
   held: false,
   steered: false,
+  pending: false,
   auto: !reduceMotion,
+  originX: 0,
+  originY: 0,
   lastX: 0,
   lastY: 0,
   id: 0,
@@ -501,6 +504,7 @@ function resetPortraitSpin() {
   portraitTurn.vy = 0;
   portraitTurn.held = false;
   portraitTurn.steered = false;
+  portraitTurn.pending = false;
   portraitTurn.auto = !reduceMotion;
   portraitSlots.forEach((slot) => slot.classList.remove("is-turning"));
 }
@@ -512,19 +516,40 @@ portraitSlots.forEach((slot) => {
     portraitTurn.auto = false;
     portraitTurn.vy = 0;
     if (event.target.closest("a")) return;
-    portraitTurn.held = true;
     portraitTurn.steered = true;
     portraitTurn.vx = 0;
     portraitTurn.vy = 0;
+    portraitTurn.originX = event.clientX;
+    portraitTurn.originY = event.clientY;
     portraitTurn.lastX = event.clientX;
     portraitTurn.lastY = event.clientY;
     portraitTurn.id = event.pointerId;
-    slot.classList.add("is-turning");
-    try { slot.setPointerCapture(event.pointerId); } catch { /* pointer already released */ }
+    portraitTurn.pending = phoneLayout.matches;
+    portraitTurn.held = !phoneLayout.matches;
+    if (!phoneLayout.matches) {
+      slot.classList.add("is-turning");
+      try { slot.setPointerCapture(event.pointerId); } catch { /* pointer already released */ }
+    }
   });
 
   slot.addEventListener("pointermove", (event) => {
-    if (!portraitTurn.held || event.pointerId !== portraitTurn.id) return;
+    if (event.pointerId !== portraitTurn.id) return;
+    if (portraitTurn.pending) {
+      const dx = event.clientX - portraitTurn.originX;
+      const dy = event.clientY - portraitTurn.originY;
+      if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) {
+        portraitTurn.pending = false;
+        portraitTurn.held = false;
+        return;
+      }
+      if (Math.abs(dx) <= 10 || Math.abs(dx) < Math.abs(dy)) return;
+      portraitTurn.pending = false;
+      portraitTurn.held = true;
+      portraitTurn.lastX = event.clientX;
+      slot.classList.add("is-turning");
+      try { slot.setPointerCapture(event.pointerId); } catch { /* pointer already released */ }
+    }
+    if (!portraitTurn.held) return;
     const dx = event.clientX - portraitTurn.lastX;
     portraitTurn.y += dx * 0.012;
     portraitTurn.x = 0;
@@ -539,7 +564,8 @@ portraitSlots.forEach((slot) => {
 });
 
 function releasePortrait(event) {
-  if (!portraitTurn.held || event.pointerId !== portraitTurn.id) return;
+  if (event.pointerId !== portraitTurn.id) return;
+  portraitTurn.pending = false;
   portraitTurn.held = false;
   portraitSlots.forEach((slot) => slot.classList.remove("is-turning"));
 }

@@ -36,9 +36,6 @@ field.add(new THREE.Points(
   new THREE.PointsMaterial({ color: 0xf5a623, size: 0.028, transparent: true, opacity: 0.75, depthWrite: false })
 ));
 
-const pointer = { x: 0, y: 0 };
-const target = { x: 0, y: 0 };
-
 function resize() {
   camera.aspect = window.innerWidth / Math.max(window.innerHeight, 1);
   camera.updateProjectionMatrix();
@@ -46,21 +43,20 @@ function resize() {
   renderer.setSize(window.innerWidth, window.innerHeight, false);
 }
 
-function frame() {
-  pointer.x += (target.x - pointer.x) * (reduceMotion ? 1 : 0.075);
-  pointer.y += (target.y - pointer.y) * (reduceMotion ? 1 : 0.075);
-  field.position.x = pointer.x * -0.45;
-  field.position.y = pointer.y * 0.22;
-  sculpture.rotation.y += reduceMotion ? 0 : 0.0018;
-  sculpture.rotation.x += reduceMotion ? 0 : 0.0007;
+let last = performance.now();
+
+function frame(now) {
+  const dt = Math.min((now - last) / 1000, 0.05);
+  last = now;
+  if (!reduceMotion) {
+    field.rotation.y += dt * 0.04;
+    sculpture.rotation.y += dt * 0.11;
+    sculpture.rotation.x += dt * 0.04;
+  }
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
 }
 
-window.addEventListener("pointermove", (event) => {
-  target.x = (event.clientX / window.innerWidth) * 2 - 1;
-  target.y = (event.clientY / window.innerHeight) * 2 - 1;
-});
 window.addEventListener("resize", resize);
 resize();
-frame();
+requestAnimationFrame(frame);

@@ -177,7 +177,7 @@ function goToPage(name) {
 stage.addEventListener("pointerdown", (event) => {
   if (flip.busy || lightboxOpen || event.button !== 0) return;
   const peel = event.target.closest(".peel");
-  if (phoneLayout.matches && !peel) return;
+  if ((phoneLayout.matches || event.pointerType === "touch") && !peel) return;
   if (!peel && event.target.closest("a, button, input, textarea, select, label")) return;
   drag = {
     id: event.pointerId,
@@ -226,6 +226,52 @@ function endDrag(event) {
 
 stage.addEventListener("pointerup", endDrag);
 stage.addEventListener("pointercancel", endDrag);
+
+let finger = null;
+
+function pageScroller() {
+  if (phoneLayout.matches) return document.scrollingElement;
+  return pages[flip.index]?.querySelector(".sheet-scroll") || document.scrollingElement;
+}
+
+stage.addEventListener("pointerdown", (event) => {
+  if (event.pointerType !== "touch" && event.pointerType !== "pen") return;
+  if (phoneLayout.matches || event.button !== 0) return;
+  if (event.target.closest("button, input, textarea, select, label, .peel")) return;
+  finger = {
+    id: event.pointerId,
+    x: event.clientX,
+    y: event.clientY,
+    scroller: pageScroller(),
+    onPortrait: Boolean(event.target.closest("[data-portrait]")),
+    scrolling: false,
+  };
+});
+
+stage.addEventListener("pointermove", (event) => {
+  if (!finger || event.pointerId !== finger.id || portraitTurn.held) return;
+  const dx = event.clientX - finger.x;
+  const dy = event.clientY - finger.y;
+  if (!finger.scrolling) {
+    if (Math.hypot(dx, dy) < 8) return;
+    if (finger.onPortrait && Math.abs(dx) > Math.abs(dy)) {
+      finger = null;
+      return;
+    }
+    finger.scrolling = true;
+  }
+  finger.scroller.scrollTop += finger.y - event.clientY;
+  finger.y = event.clientY;
+  if (event.cancelable) event.preventDefault();
+}, { passive: false });
+
+function endFinger(event) {
+  if (!finger || event.pointerId !== finger.id) return;
+  finger = null;
+}
+
+stage.addEventListener("pointerup", endFinger);
+stage.addEventListener("pointercancel", endFinger);
 
 stage.addEventListener("click", (event) => {
   const peel = event.target.closest(".peel");
@@ -477,8 +523,6 @@ const portraitGroup = new THREE.Group();
 portraitGroup.add(portrait);
 scene.add(portraitGroup);
 
-const pointer = { x: 0, y: 0 };
-const pointerTarget = { x: 0, y: 0 };
 const portraitRest = { x: 0, y: 0 };
 const portraitTurn = {
   x: portraitRest.x,
@@ -512,7 +556,8 @@ function resetPortraitSpin() {
 portraitSlots.forEach((slot) => {
   slot.addEventListener("pointerdown", (event) => {
     if (event.button !== 0 || slot !== activeSlot()) return;
-    event.stopPropagation();
+    const touch = event.pointerType === "touch" || event.pointerType === "pen";
+    if (!touch) event.stopPropagation();
     portraitTurn.auto = false;
     portraitTurn.vy = 0;
     if (event.target.closest("a")) return;
@@ -524,9 +569,9 @@ portraitSlots.forEach((slot) => {
     portraitTurn.lastX = event.clientX;
     portraitTurn.lastY = event.clientY;
     portraitTurn.id = event.pointerId;
-    portraitTurn.pending = phoneLayout.matches;
-    portraitTurn.held = !phoneLayout.matches;
-    if (!phoneLayout.matches) {
+    portraitTurn.pending = phoneLayout.matches || touch;
+    portraitTurn.held = !(phoneLayout.matches || touch);
+    if (!portraitTurn.pending) {
       slot.classList.add("is-turning");
       try { slot.setPointerCapture(event.pointerId); } catch { /* pointer already released */ }
     }
@@ -613,9 +658,6 @@ function frame() {
   const now = performance.now();
   const dt = Math.min((now - portraitClock) / 1000, 0.05);
   portraitClock = now;
-  const ease = reduceMotion ? 1 : 0.075;
-  pointer.x = lerp(pointer.x, pointerTarget.x, ease);
-  pointer.y = lerp(pointer.y, pointerTarget.y, ease);
 
   if (portraitTurn.auto && !portraitTurn.held) {
     portraitTurn.y += dt * 0.22;
@@ -651,10 +693,11 @@ function frame() {
     links.hidden = !(showingBack && current && links.parentElement === current);
   });
 
-  background.position.x = pointer.x * -0.45;
-  background.position.y = pointer.y * 0.22;
-  sculpture.rotation.y += reduceMotion ? 0 : 0.0018;
-  sculpture.rotation.x += reduceMotion ? 0 : 0.0007;
+  if (!reduceMotion) {
+    background.rotation.y += dt * 0.04;
+    sculpture.rotation.y += dt * 0.11;
+    sculpture.rotation.x += dt * 0.04;
+  }
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
 }
@@ -761,10 +804,6 @@ function paintBusinessCard() {
 
 document.fonts.ready.then(paintBusinessCard);
 
-window.addEventListener("pointermove", (event) => {
-  pointerTarget.x = (event.clientX / window.innerWidth) * 2 - 1;
-  pointerTarget.y = (event.clientY / window.innerHeight) * 2 - 1;
-});
 window.addEventListener("resize", resize);
 
 const initialName = location.hash.replace("#", "") || "home";

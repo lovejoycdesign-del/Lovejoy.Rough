@@ -170,7 +170,7 @@ body.portrait-overlay #scene {
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: var(--gold) transparent;
-  touch-action: pan-y;
+  touch-action: none;
 }
 
 .sheen {

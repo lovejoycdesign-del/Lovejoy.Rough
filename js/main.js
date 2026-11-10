@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { projects } from "./catalog.js?v=2";
 
 const TITLES = {
-  home: "LJ Chirombo — Digital Designer",
+  home: "LOVEJOY VISUALS — A digital Agency",
   about: "About — LJ Chirombo",
   work: "Work — LJ Chirombo",
   skills: "Skills — LJ Chirombo",
@@ -61,56 +61,40 @@ function paint() {
   const turn = Math.min(Math.abs(progress), 1);
 
   pages.forEach((sheet, i) => {
-    let angle = 0;
     let show = i === flip.index;
     let z = i === flip.index ? 30 : 1;
     let opacity = show ? 1 : 0;
-    let scale = 1;
 
     if (progress > 0) {
       if (i === flip.index) {
-        angle = -turn * 78;
         show = true;
-        z = 40;
+        z = 20;
         opacity = 1 - turn;
       } else if (i === dest) {
         show = true;
-        z = 20;
+        z = 30;
         opacity = turn;
-        scale = 0.985 + turn * 0.015;
       }
     } else if (progress < 0) {
       if (i === dest) {
-        angle = -78 * (1 - turn);
         show = true;
-        z = 40;
+        z = 30;
         opacity = turn;
-        scale = 0.985 + turn * 0.015;
       } else if (i === flip.index) {
         show = true;
         z = 20;
         opacity = 1 - turn;
-        scale = 1 - turn * 0.015;
       }
     }
 
-    const shade = Math.sin(turn * Math.PI);
-    const lift = shade * 18;
-    sheet.style.transform = phoneLayout.matches
-      ? "none"
-      : `rotateY(${angle}deg) translateZ(${lift}px) scale(${scale})`;
+    sheet.style.transform = "none";
     sheet.style.opacity = String(show ? opacity : 0);
     sheet.style.zIndex = String(z);
     sheet.style.visibility = show ? "visible" : "hidden";
     sheet.inert = !show;
     sheet.setAttribute("aria-hidden", show ? "false" : "true");
     const sheen = sheet.querySelector(".sheen");
-    const moving = progress > 0 ? i === flip.index : progress < 0 && i === dest;
-    if (sheen) sheen.style.opacity = moving ? String(shade * 0.35) : "0";
-    if (moving) {
-      const strong = sheet.querySelector(".face.back strong");
-      if (strong) strong.textContent = pages[dest].dataset.label;
-    }
+    if (sheen) sheen.style.opacity = "0";
   });
 }
 
@@ -139,6 +123,14 @@ function sync(push) {
   if (push && location.hash !== hash) history.pushState({ page }, "", hash);
 }
 
+function arrive(dest) {
+  const scroller = pages[dest].querySelector(".sheet-scroll");
+  if (!scroller || reduceMotion) return;
+  scroller.classList.remove("is-arriving");
+  void scroller.offsetWidth;
+  scroller.classList.add("is-arriving");
+}
+
 function settle(dest, push) {
   flip.index = dest;
   flip.progress = 0;
@@ -148,52 +140,23 @@ function settle(dest, push) {
   document.body.classList.remove("is-turning");
   const scroller = pages[dest].querySelector(".sheet-scroll");
   if (scroller) scroller.scrollTop = 0;
+  window.scrollTo(0, 0);
   sync(push);
+  arrive(dest);
   if (typeof resetPortraitSpin === "function") resetPortraitSpin();
 }
 
-function easeInOut(t) {
-  return t < 0.5 ? 4 * t * t * t : 1 - ((-2 * t + 2) ** 3) / 2;
-}
-
-function animateTo(from, to, dest, fromDrag) {
-  if (reduceMotion || phoneLayout.matches || from === to) {
-    if (to === 0) {
-      flip.progress = 0;
-      flip.busy = false;
-      paint();
-      return;
-    }
-    settle(dest, true);
+function animateTo(from, to, dest) {
+  if (to === 0) {
+    flip.progress = 0;
+    flip.busy = false;
+    flip.dest = flip.index;
+    paint();
+    document.body.classList.remove("is-turning");
     return;
   }
-
-  flip.busy = true;
-  flip.dest = dest;
-  const start = performance.now();
-  const distance = Math.abs(to - from);
-  const duration = fromDrag ? Math.max(460, Math.round(820 * distance)) : 1080;
-
-  function tick(now) {
-    const t = Math.min(1, (now - start) / duration);
-    const eased = fromDrag ? 1 - (1 - t) ** 3 : easeInOut(t);
-    flip.progress = from + (to - from) * eased;
-    paint();
-    if (t < 1) {
-      requestAnimationFrame(tick);
-      return;
-    }
-    if (to === 0) {
-      flip.progress = 0;
-      flip.busy = false;
-      paint();
-      document.body.classList.remove("is-turning");
-      return;
-    }
-    settle(dest, true);
-  }
-
-  requestAnimationFrame(tick);
+  if (from === to) return;
+  settle(dest, true);
 }
 
 function flipBy(direction) {
@@ -292,7 +255,7 @@ window.addEventListener("popstate", () => {
 window.addEventListener(
   "wheel",
   (event) => {
-    if (lightboxOpen || flip.busy || event.ctrlKey) return;
+    if (lightboxOpen || flip.busy || event.ctrlKey || phoneLayout.matches) return;
     const scroller = pages[flip.index].querySelector(".sheet-scroll");
     if (!scroller) return;
     const delta = event.deltaY;
@@ -304,7 +267,7 @@ window.addEventListener(
     }
     event.preventDefault();
     const now = performance.now();
-    if (now - wheelAt < 800) return;
+    if (now - wheelAt < 480) return;
     if (Math.abs(delta) < 8) return;
     wheelAt = now;
     flipBy(delta > 0 ? 1 : -1);
@@ -637,7 +600,7 @@ function frame() {
     portraitTurn.vy *= 0.94;
   }
 
-  const showPortrait = portraitPages.has(document.body.dataset.view) && !document.body.classList.contains("is-turning");
+  const showPortrait = portraitPages.has(document.body.dataset.view);
   document.body.classList.remove("portrait-overlay");
   renderer.setClearAlpha(1);
   background.visible = true;

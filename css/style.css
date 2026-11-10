@@ -146,12 +146,6 @@ body.portrait-overlay #scene {
 
 .face.front { background: transparent; }
 
-body.is-turning .face.front {
-  background:
-    radial-gradient(900px 480px at 78% 18%, rgba(245, 166, 35, 0.08), transparent 55%),
-    #070707;
-}
-
 .face.back {
   transform: rotateY(180deg);
   display: grid;
@@ -535,7 +529,7 @@ h1, h2, .sign {
   display: block;
 }
 
-body.has-webgl:not(.is-turning) .portrait-slot img { opacity: 0; }
+body.has-webgl .portrait-slot img { opacity: 0; }
 
 .services {
   width: min(1120px, calc(100% - 24px));
@@ -1363,26 +1357,69 @@ body.site-page { overflow: auto; }
 
 .experience-entry { display: grid; gap: 12px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
 
+@keyframes page-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sheet-scroll.is-arriving { animation: page-in 0.18s ease; }
+
 @media (max-width: 800px) {
-  .stage { perspective: none; }
-  .sheet, .face { transform-style: flat; }
-  .sheet-scroll {
-    height: 100%;
+  html, body {
+    overflow-x: hidden;
     overflow-y: auto;
+    height: auto;
     -webkit-overflow-scrolling: touch;
   }
+  .stage {
+    position: relative;
+    inset: auto;
+    height: auto;
+    min-height: 100dvh;
+    perspective: none;
+  }
+  .sheet {
+    position: relative;
+    inset: auto;
+    height: auto;
+    overflow: visible;
+  }
+  .sheet[aria-hidden="true"] { display: none; }
+  .sheet[aria-hidden="false"] { min-height: 100dvh; }
+  .face {
+    position: relative;
+    inset: auto;
+    height: auto;
+    overflow: visible;
+  }
+  .face.back { display: none; }
+  .sheet, .face { transform-style: flat; }
+  .sheet-scroll {
+    height: auto;
+    overflow: visible;
+    touch-action: pan-y;
+  }
+  .peel { position: fixed; }
   .nav {
     height: auto;
+    width: 100%;
     padding: 10px 0 4px;
     align-items: flex-start;
     flex-direction: column;
     gap: 8px;
   }
+  .sheet:not([data-page="home"]) .nav,
+  .home-flow { width: calc(100% - 24px); }
   .nav nav {
     width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 8px 12px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+  .nav nav a {
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
   }
   .hero, .page-hero { grid-template-columns: 1fr; }
   .hero .portrait-slot,
